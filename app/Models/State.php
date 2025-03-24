@@ -12,4 +12,9 @@ class State extends Model
     public $timestamps = false;
 
     protected $fillable = ['description'];
+
+    public function nursery()
+    {
+        return $this->hasMany(Nursery::class);
+    }
 }
