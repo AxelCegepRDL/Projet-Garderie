@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\NurseryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +13,10 @@ use App\Http\Controllers\NurseryController;
 |
 */
 
-Route::get('/', function () {
-    return view('nursery');
-})->name('List nursery');
-
-Route::get('/Garderies', function () {
-    return view('nursery'); })->name('nursery');
-Route::get('/garderies/{id}/edit', [NurseryController::class, formModifyNursery($id)])->name('Form modify nursery');
+Route::get('/', 'App/Http/Controllers/NurseryController@index')->name('List nursery');
+Route::get('/Garderies', 'App/Http/Controllers/NurseryController@index')->name('List nursery');
+Route::get('/garderies/{id}/edit', 'App/Http/Controllers/NurseryController@formModifyNursery')->name('Form modify nursery');
+Route::post('/garderies/add', 'App/Http/Controllers/NurseryController@add')->name('Add a nursery');
+Route::put('/garderies/{id}/update', 'App/Http/Controllers/NurseryController@update')->name('Modify nursery');
+Route::delete('/garderies/{id}/delete', 'App/Http/Controllers/NurseryController@delete')->name('Delete nursery');
+Route::delete('/garderies/clear', 'App/Http/Controllers/NurseryController@clear')->name('Clear list nursery');
