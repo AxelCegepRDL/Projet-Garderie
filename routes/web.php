@@ -14,10 +14,7 @@ use App\Http\Controllers\NurseryController;
 |
 */
 
-Route::get('/', function () {
-    return view('nursery');
-})->name('List nursery');
+Route::get('/', 'App\Http\Controllers\NurseryController@index')->name('List nursery');
 
-Route::get('/Garderies', function () {
-    return view('nursery'); })->name('nursery');
-Route::get('/garderies/{id}/edit', [NurseryController::class, formModifyNursery($id)])->name('Form modify nursery');
+Route::get('/Garderies', 'App\Http\Controllers\NurseryController@index')->name('nursery');
+Route::get('/garderies/{id}/edit', 'App\Http\Controllers\NurseryController@formModifyNursery')->name('Form modify nursery');

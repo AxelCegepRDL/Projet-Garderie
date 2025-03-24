@@ -13,8 +13,8 @@
                 <intput class="deleteButton" type="button">Vider la liste</intput>
             </div>
         </div>
-        @if ($nurserys->count() > 0)
-            @foreach ($nurserys as $nursery)
+        @if ($nurseries->count() > 0)
+            @foreach ($nurseries as $nursery)
                 <div class="row row-cols-7">
                     <div class="col">{{$nursery->name}}</div>
                     <div class="col">{{$nursery->address}}</div>

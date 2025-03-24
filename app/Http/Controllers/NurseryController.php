@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Nursery;
+use App\Models\Nursery;
 use Illuminate\Http\Request;
 
 class NurseryController extends Controller
