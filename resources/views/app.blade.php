@@ -8,10 +8,8 @@
 </head>
 
 <body>
-    <header>
+
         @extends('navbar')
-    </header>
-    <hr>
         @yield('content')
     <hr>
     <footer>
