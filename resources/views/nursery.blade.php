@@ -1,8 +1,8 @@
 @extends('app')
 
 @section('content')
-<h1 class="m-5">Liste des garderies</h1>
-    <div class="container border border-info p-3 bg-">
+    <h1 class="m-5">Liste des garderies</h1>
+    <div class="container border border-info p-3">
         <div class="row row-cols-12">
             <div class="col col-2">Nom</div>
             <div class="col col-3">Adresse</div>
@@ -15,7 +15,7 @@
                     @method('DELETE')
                     @csrf
                     <input class="bg-danger border border-danger rounded text-white p-2" value="Vider la liste"
-                        type="submit"></input>
+                        type="submit" onclick="alert('Êtes-vous sûr de vouloir vider la liste des garderies ?');"></input>
                 </form>
             </div>
         </div>
@@ -38,8 +38,8 @@
                         <form action="/garderies/{{$nursery->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
-                            <input class="bg-danger border border-danger rounded text-white p-2" value="Supprimer"
-                                type="submit"></input>
+                            <input class="bg-danger border border-danger rounded text-white p-2" value="Supprimer" type="submit"
+                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette garderie ?');"></input>
                         </form>
                     </div>
                 </div>
@@ -48,37 +48,38 @@
             <div class="col "><span>Aucune garderie...</span></div>
         @endif
     </div>
-    <form class="p-3" action="/garderies/add" method="post">
-        @csrf
-        <table>
-            <tr>
-                <td><label for="name">Nom :</label></td>
-                <td><input type="text" name="name" id="name"></td>
-            </tr>
-            <tr>
-                <td><label for="address">Adresse :</label></td>
-                <td><input type="text" name="address" id="address"></td>
-            </tr>
-            <tr>
-                <td><label for="city">Ville :</label></td>
-                <td><input type="text" name="city" id="city"></td>
-            </tr>
-            <tr>
-                <td><label for="state_id">Province :</label></td>
-                <td><select name="state_id" id="state_id">
+    <h1 class="m-5">Ajouter une garderie</h1>
+    <div class="container">
+        <form action="{{ route('Add a nursery') }}" method="POST">
+            @csrf
+            <div class="row my-1">
+                <label for="name" class="col">Nom</label>
+                <input type="text" name="name" id="name" class="col">
+            </div>
+            <div class="row my-1">
+                <label for="address" class="col">Adresse</label>
+                <input type="text" name="address" id="address" class="col">
+            </div>
+            <div class="row my-1">
+                <label for="city" class="col">Ville</label>
+                <input type="text" name="city" id="city" class="col">
+            </div>
+            <div class="row my-1">
+                <label for="state" class="col">Province</label>
+                <select name="state_id" id="state" class="col">
                     @foreach ($states as $state)
                         <option value="{{$state->id}}">{{$state->description}}</option>
                     @endforeach
-                </select></td>
-            </tr>
-            <tr>
-                <td><label for="phone">Téléphone :</label></td>
-                <td><input type="text" name="phone" id="phone"></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><button class="bg-success border border-success rounded text-white p-2" type="submit">Créer</button></td>
-            </tr>
-        </table>
-    </form>
+
+                </select>
+            </div>
+            <div class="row my-1">
+                <label for="phone" class="col">Telephone</label>
+                <input type="text" pattern="{0 - 9}" name="phone" id="phone" class="col">
+            </div>
+            <div class="row my-3">
+                <input type="submit" value="Ajouter">
+            </div>
+        </form>
+    </div>
 @endsection

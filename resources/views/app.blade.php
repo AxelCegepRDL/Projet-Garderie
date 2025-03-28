@@ -29,6 +29,16 @@
     a {
         text-decoration: none;
     }
+
+    .bg-warning:hover{
+        background-color:rgb(199, 151, 8) !important;
+        border-color: rgb(199, 151, 8) !important;
+    }
+
+    .bg-danger:hover{
+        background-color:rgb(180, 48, 61) !important;
+        border-color: rgb(180, 48, 61)!important;
+    }
 </style>
 
 <body>

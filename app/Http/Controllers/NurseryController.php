@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\State;
 use App\Models\Nursery;
-use App\Models\State;
 use Illuminate\Http\Request;
 
 class NurseryController extends Controller
