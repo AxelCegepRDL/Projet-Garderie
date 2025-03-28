@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\State;
 use App\Models\Nursery;
 use App\Models\State;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class NurseryController extends Controller
     public function index()
     {
         $nurseries = Nursery::all();
-        return view('nursery', compact('nurseries'));
+        $states = State::all();
+        return view('nursery', compact('nurseries', 'states'));
     }
 
     public function add(Request $request)
@@ -20,7 +22,7 @@ class NurseryController extends Controller
             'name' => $request->name,
             'address' => $request->address,
             'city' => $request->city,
-            'state_id' => $request->state_id,
+            'state_id' => (int) $request->state_id,
             'phone' => $request->phone
         ]);
         return redirect()->route('List nursery');

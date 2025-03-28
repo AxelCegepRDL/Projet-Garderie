@@ -48,4 +48,37 @@
             <div class="col "><span>Aucune garderie...</span></div>
         @endif
     </div>
+    <form class="p-3" action="/garderies/add" method="post">
+        @csrf
+        <table>
+            <tr>
+                <td><label for="name">Nom :</label></td>
+                <td><input type="text" name="name" id="name"></td>
+            </tr>
+            <tr>
+                <td><label for="address">Adresse :</label></td>
+                <td><input type="text" name="address" id="address"></td>
+            </tr>
+            <tr>
+                <td><label for="city">Ville :</label></td>
+                <td><input type="text" name="city" id="city"></td>
+            </tr>
+            <tr>
+                <td><label for="state_id">Province :</label></td>
+                <td><select name="state_id" id="state_id">
+                    @foreach ($states as $state)
+                        <option value="{{$state->id}}">{{$state->description}}</option>
+                    @endforeach
+                </select></td>
+            </tr>
+            <tr>
+                <td><label for="phone">Téléphone :</label></td>
+                <td><input type="text" name="phone" id="phone"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button class="bg-success border border-success rounded text-white p-2" type="submit">Créer</button></td>
+            </tr>
+        </table>
+    </form>
 @endsection
