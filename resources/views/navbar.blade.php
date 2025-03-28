@@ -11,5 +11,3 @@
         <div class="col"><a href="#">Rapport</a></div>
     </div>
 </div>
-
-<hr>
