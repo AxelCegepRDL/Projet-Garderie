@@ -11,7 +11,7 @@ class Nursery extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'address', 'city', 'phone', 'state-id'];
+    protected $fillable = ['name', 'address', 'city', 'state_id', 'phone'];
 
     public function state()
     {
