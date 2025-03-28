@@ -25,7 +25,6 @@
                 <div class="col col-3">{{$nursery->address}}</div>
                     <div class="col">{{$nursery->city}}</div>
                     <div class="col">{{$nursery->state->description}}</div>
-                    <div class="col">{{$nursery->state->description}}</div>
                     <div class="col">{{$nursery->phone}}</div>
                     <div class="col">
                         <form action="/garderies/{{$nursery->id}}/edit" method="get">
