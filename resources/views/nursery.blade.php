@@ -8,13 +8,15 @@
             <div class="col">Ville</div>
             <div class="col">Province</div>
             <div class="col">Telephone</div>
-            <div class="col"><form action="{{route('Clear list nursery')}}" method="post">
-                @method('DELETE')
-                @csrf
-                <input class="bg-danger border border-danger rounded text-white p-2" value="Vider la liste"
-                    type="submit"></input>
-            </form></div>
             <div class="col"></div>
+            <div class="col">
+                <form action="{{route('Clear list nursery')}}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <input class="bg-danger border border-danger rounded text-white p-2" value="Vider la liste"
+                        type="submit"></input>
+                </form>
+            </div>
         </div>
         @if ($nurseries->count() > 0)
             @foreach ($nurseries as $nursery)
@@ -23,6 +25,7 @@
                 <div class="col col-3">{{$nursery->address}}</div>
                     <div class="col">{{$nursery->city}}</div>
                     <div class="col">{{$nursery->state->description}}</div>
+                    <div class="col">{{$nursery->state->description}}</div>
                     <div class="col">{{$nursery->phone}}</div>
                     <div class="col">
                         <form action="/garderies/{{$nursery->id}}/edit" method="get">
@@ -30,8 +33,19 @@
                             <input class="bg-warning border border-warning rounded text-white p-2" value="Modifier"
                                 type="submit"></input>
                         </form>
+                        <form action="/garderies/{{$nursery->id}}/edit" method="get">
+                            @csrf
+                            <input class="bg-warning border border-warning rounded text-white p-2" value="Modifier"
+                                type="submit"></input>
+                        </form>
                     </div>
                     <div class="col">
+                        <form action="/garderies/{{$nursery->id}}/delete" method="post">
+                            @method('DELETE')
+                            @csrf
+                            <input class="bg-danger border border-danger rounded text-white p-2" value="Supprimer"
+                                type="submit"></input>
+                        </form>
                         <form action="/garderies/{{$nursery->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
