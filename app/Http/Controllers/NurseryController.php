@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Nursery;
+use App\Models\State;
 use Illuminate\Http\Request;
 
 class NurseryController extends Controller
@@ -28,7 +29,8 @@ class NurseryController extends Controller
     public function formModifyNursery($id)
     {
         $nursery = Nursery::findOrFail($id);
-        return view('nurseryModify', compact('nursery'));
+        $states = State::all();
+        return view('nurseryModify', compact('nursery', 'states'));
     }
 
     public function update($id, Request $request)

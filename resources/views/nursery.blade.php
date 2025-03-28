@@ -1,11 +1,12 @@
 @extends('app')
 
 @section('content')
+<h1 class="m-5">Liste des garderies</h1>
     <div class="container border border-info p-3 bg-">
-        <div class="row row-cols-10">
+        <div class="row row-cols-12">
             <div class="col col-2">Nom</div>
             <div class="col col-3">Adresse</div>
-            <div class="col">Ville</div>
+            <div class="col col-2">Ville</div>
             <div class="col">Province</div>
             <div class="col">Telephone</div>
             <div class="col"></div>
@@ -20,10 +21,10 @@
         </div>
         @if ($nurseries->count() > 0)
             @foreach ($nurseries as $nursery)
-                <div class="row row-cols-10 my-4">
+                <div class="row row-cols-12 my-4">
                     <div class="col col-2">{{$nursery->name}}</div>
                     <div class="col col-3">{{$nursery->address}}</div>
-                    <div class="col">{{$nursery->city}}</div>
+                    <div class="col col-2">{{$nursery->city}}</div>
                     <div class="col">{{$nursery->state->description}}</div>
                     <div class="col">{{$nursery->phone}}</div>
                     <div class="col">
