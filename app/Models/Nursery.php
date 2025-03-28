@@ -11,10 +11,10 @@ class Nursery extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['name', 'address', 'city', 'phone', 'id-state'];
+    protected $fillable = ['name', 'address', 'city', 'phone', 'state-id'];
 
     public function state()
     {
-        return $this->hasOne(State::class);
+        return $this->belongsTo(State::class);
     }
 }
