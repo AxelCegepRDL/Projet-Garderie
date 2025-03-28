@@ -32,19 +32,8 @@
                             <input class="bg-warning border border-warning rounded text-white p-2" value="Modifier"
                                 type="submit"></input>
                         </form>
-                        <form action="/garderies/{{$nursery->id}}/edit" method="get">
-                            @csrf
-                            <input class="bg-warning border border-warning rounded text-white p-2" value="Modifier"
-                                type="submit"></input>
-                        </form>
                     </div>
                     <div class="col">
-                        <form action="/garderies/{{$nursery->id}}/delete" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <input class="bg-danger border border-danger rounded text-white p-2" value="Supprimer"
-                                type="submit"></input>
-                        </form>
                         <form action="/garderies/{{$nursery->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
