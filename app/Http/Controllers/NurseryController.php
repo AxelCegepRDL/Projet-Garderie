@@ -22,6 +22,7 @@ class NurseryController extends Controller
             'state_id' => $request->state_id,
             'phone' => $request->phone
         ]);
+        return redirect()->route('List nursery');
     }
 
     public function formModifyNursery($id)
@@ -32,7 +33,7 @@ class NurseryController extends Controller
 
     public function update($id, Request $request)
     {
-        $nursery = Nursery::findOrFail(1);
+        $nursery = Nursery::findOrFail($id);
 
         $nursery->name = $request->name;
         $nursery->address = $request->address;
@@ -41,5 +42,20 @@ class NurseryController extends Controller
         $nursery->phone = $request->phone;
 
         $nursery->save();
+
+        return redirect()->route('List nursery');
+    }
+
+    public function delete($id)
+    {
+        $nursery = Nursery::findOrFail($id);
+        $nursery->delete();
+        return redirect()->route('List nursery');
+    }
+
+    public function clear()
+    {
+        Nursery::query()->delete();
+        return redirect()->route('List nursery');
     }
 }
