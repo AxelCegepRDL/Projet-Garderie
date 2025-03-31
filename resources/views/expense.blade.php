@@ -8,11 +8,11 @@
         @if ($nurseries->count() > 0)
             <select name="nurseryId" id="nurseryId" oninput="submit();">
                 @foreach ($nurseries as $nursery)
-                @if(request('nurseryId') == $nursery->id)
-                    <option value="{{ $nursery->id }}" selected>{{ $nursery->name }}</option>
-                @else
-                    <option value="{{ $nursery->id }}">{{ $nursery->name }}</option>
-                @endif
+                    @if(request('nurseryId') == $nursery->id)
+                        <option value="{{ $nursery->id }}" selected>{{ $nursery->name }}</option>
+                    @else
+                        <option value="{{ $nursery->id }}">{{ $nursery->name }}</option>
+                    @endif
                 @endforeach
             </select>
         @else
@@ -70,12 +70,12 @@
             @csrf
             <div class="row my-1">
                 <label for="amount" class="col">Montant</label>
-                <input type="text" name="amount" id="amount" class="col">
+                <input type="number" step="0.5" name="amount" id="amount" class="col" required>
             </div>
             <div class="row my-1">
-                <label for="expense_categories_id" class="col">Catégorie de dépense</label>
+                <label for="expense_category_id" class="col">Catégorie de dépense</label>
                 @if($expenseCategories->count() > 0)
-                    <select type="text" name="expense_categories_id" id="expense_categories_id" class="col">
+                    <select type="text" name="expense_category_id" id="expense_category_id" class="col" required>
                         @foreach($expenseCategories as $expenseCategorie)
                             <option value="{{ $expenseCategorie->id }}">{{ $expenseCategorie->description }}</option>
                         @endforeach
@@ -90,7 +90,7 @@
                     <div class="col">
                         @foreach($commerces as $commerce)
                             <input type="radio" name="commerce_id" id="{{ $commerce->description }}" class="col"
-                                value="{{ $commerce->id }}">
+                                value="{{ $commerce->id }}" required>
                             <label for="{{ $commerce->description }}">{{ $commerce->description }}</label>
                             <span> | </span>
                         @endforeach
@@ -102,7 +102,7 @@
             <div class="row my-3">
                 <input type="submit" value="Ajouter">
             </div>
-            <input type="hidden" name="nursery_id" value="">
+            <input type="hidden" name="nursery_id" value="{{  request('nurseryId', $nurseries[0]->id) }}">
         </form>
     </div>
 @endsection

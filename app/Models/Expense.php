@@ -11,7 +11,7 @@ class Expense extends Model
 
     public $timestamps = false;
 
-    protected $fillable = ['dateTime', 'amount', 'nursery_id', 'commerce_id', 'category_expense_id'];
+    protected $fillable = ['dateTime', 'amount', 'nursery_id', 'commerce_id', 'expense_category_id'];
 
     public function expenseCategory()
     {

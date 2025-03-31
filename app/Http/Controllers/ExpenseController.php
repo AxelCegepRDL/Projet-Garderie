@@ -31,9 +31,9 @@ class ExpenseController extends Controller
             'amount' => $request->amount,
             'nursery_id' => $request->nursery_id,
             'commerce_id' => $request->commerce_id,
-            'expense_categories_id' => $request->expense_categories_id
+            'expense_category_id' => $request->expense_category_id
         ]);
-        return redirect()->route('List of expenses');
+        return redirect()->route('List the expenses');
     }
 
     public function formModifyNursery($id)
