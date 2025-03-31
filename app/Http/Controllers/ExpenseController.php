@@ -14,7 +14,7 @@ class ExpenseController extends Controller
     {
         $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $request->nurseryId)->get();
         $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
-            $expense["eligibleAmount"] = $expense->amount * $expense->expenseCategory->percentage; // Adding a new field
+            $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);
             return $expense;
         });
         $expenseCategories = ExpenseCategory::all();
