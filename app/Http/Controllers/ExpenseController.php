@@ -12,14 +12,20 @@ class ExpenseController extends Controller
 {
     public function index(Request $request)
     {
-        $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $request->nurseryId)->get();
+        $nurseries = Nursery::all();
+        if (isset($request->nurseryId)) {
+            $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $request->nurseryId)->get();
+        } else if ($nurseries->count() > 0) {
+            $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $nurseries[0]->id)->get();
+        } else {
+            $expensesWithoutEligibleAmounts = [];
+        }
         $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
             $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);
             return $expense;
         });
         $expenseCategories = ExpenseCategory::all();
         $commerces = Commerce::all();
-        $nurseries = Nursery::all();
 
         return view('expense', compact('nurseries', 'commerces', 'expenseCategories', 'expenses'));
     }
