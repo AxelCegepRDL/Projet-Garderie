@@ -8,7 +8,11 @@
         @if ($nurseries->count() > 0)
             <select name="nurseryId" id="nurseryId" oninput="submit();">
                 @foreach ($nurseries as $nursery)
+                @if(request('nurseryId') == $nursery->id)
+                    <option value="{{ $nursery->id }}" selected>{{ $nursery->name }}</option>
+                @else
                     <option value="{{ $nursery->id }}">{{ $nursery->name }}</option>
+                @endif
                 @endforeach
             </select>
         @else
@@ -24,7 +28,7 @@
             <div class="col">Commerce</div>
             <div class="col"></div>
             <div class="col">
-                <form action="/Expenses/{{ 2 }}/clear" method="post">
+                <form action="/Expenses/{{ request('nurseryId', $nurseries[0]->id) }}/clear" method="post">
                     @method('DELETE')
                     @csrf
                     <input class="btn btn-danger" value="Vider la liste" type="submit"
