@@ -2,19 +2,18 @@
 
 @section('content')
     <h1 class="m-5">Liste des dépenses</h1>
-    <form action="{{ route('List the expenses') }}" method="get">
+    <form action="{{ route('List the expenses') }}" method="get"  class="mx-5 mb-3">
         <label for="nurseryId">Choisir la garderie :</label>
 
-        @if ($nurseryName->count() > 0)
+        @if ($nurseries->count() > 0)
             <select name="nurseryId" id="nurseryId" oninput="submit();">
-                @foreach ($nurseryName as $nurseryName)
-                    <option value="{{ $nurseryName->id }}">{{ $nurseryName->name }}</option>
+                @foreach ($nurseries as $nursery)
+                    <option value="{{ $nursery->id }}">{{ $nursery->name }}</option>
                 @endforeach
             </select>
         @else
             <span>Aucune garderie disponible...</span>
         @endif
-
     </form>
     <div class="container border border-info p-3">
         <div class="row row-cols-12">
@@ -25,11 +24,11 @@
             <div class="col">Commerce</div>
             <div class="col"></div>
             <div class="col">
-                <form action="{{route('Clear list expenses')}}" method="post">
+                <form action="/Expenses/{{ 2 }}/clear" method="post">
                     @method('DELETE')
                     @csrf
-                    <input class="bg-danger border border-danger rounded text-white p-2" value="Vider la liste"
-                        type="submit" onclick="alert('Êtes-vous sûr de vouloir vider la liste des dépenses ?');"></input>
+                    <input class="btn btn-danger" value="Vider la liste" type="submit"
+                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des dépenses ?');"></input>
                 </form>
             </div>
         </div>
@@ -44,15 +43,14 @@
                     <div class="col">
                         <form action="/Expenses/{{$expense->id}}/edit" method="get">
                             @csrf
-                            <input class="bg-warning border border-warning rounded text-white p-2" value="Modifier"
-                                type="submit"></input>
+                            <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
                         </form>
                     </div>
                     <div class="col">
                         <form action="/Expenses/{{$expense->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
-                            <input class="bg-danger border border-danger rounded text-white p-2" value="Supprimer" type="submit"
+                            <input class="btn btn-danger" value="Supprimer" type="submit"
                                 onclick="alert('Êtes-vous sûr de vouloir supprimer cette dépense ?');"></input>
                         </form>
                     </div>
@@ -72,29 +70,33 @@
             </div>
             <div class="row my-1">
                 <label for="expenseCategorie" class="col">Catégorie de dépense</label>
-                @if($expensesCategories->cont() > 0)
+                @if($expenseCategories->count() > 0)
                     <select type="text" name="expenseCategorie" id="expenseCategorie" class="col">
-                        @foreach($expensesCategories as $expensesCategorie)
-                            <option value="{{ $expensesCategorie->id }}">{{ $expensesCategorie->description }}</option>
+                        @foreach($expenseCategories as $expenseCategorie)
+                            <option value="{{ $expenseCategorie->id }}">{{ $expenseCategorie->description }}</option>
                         @endforeach
                     </select>
                 @else
-                    <span>Aucune catégorie disponible...</span>
+                    <span class="col">Aucune catégorie disponible...</span>
                 @endif
             </div>
             <div class="row my-1">
                 <label for="city" class="col">Commerce</label>
-                @if($commerces->cont() > 0)
-                    @foreach($commerces as $commerce)
-                        <input type="radio" name="commerce" id="{{ $commerce->description }}" class="col"
-                            value="{{ $commerce->id }}">
-                        <span> | </span>
-                        <label for="{{ $commerce->description }}">{{ $commerce->description }}</label>
-                    @endforeach
-                    </select>
+                @if($commerces->count() > 0)
+                    <div class="col">
+                        @foreach($commerces as $commerce)
+                            <input type="radio" name="commerce" id="{{ $commerce->description }}" class="col"
+                                value="{{ $commerce->id }}">
+                            <span> | </span>
+                            <label for="{{ $commerce->description }}">{{ $commerce->description }}</label>
+                        @endforeach
+                    </div>
                 @else
-                    <span>Aucun commerce disponible...</span>
+                    <span class="col">Aucun commerce disponible...</span>
                 @endif
+            </div>
+            <div class="row my-3">
+                <input type="submit" value="Ajouter">
             </div>
         </form>
     </div>

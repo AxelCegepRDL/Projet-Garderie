@@ -36,6 +36,9 @@
             <div class="row my-3">
                 <input type="submit" value="Modifier">
             </div>
+            <div class="row my-3">
+                <input type="button" onclick="history.back();" value="Annuler" />
+            </div>
         </form>
     </div>
 @endsection

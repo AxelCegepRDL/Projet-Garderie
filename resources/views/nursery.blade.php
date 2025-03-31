@@ -14,8 +14,8 @@
                 <form action="{{route('Clear list nursery')}}" method="post">
                     @method('DELETE')
                     @csrf
-                    <input class="bg-danger border border-danger rounded text-white p-2" value="Vider la liste"
-                        type="submit" onclick="alert('Êtes-vous sûr de vouloir vider la liste des garderies ?');"></input>
+                    <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
+                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des garderies ?');"></input>
                 </form>
             </div>
         </div>
@@ -30,15 +30,14 @@
                     <div class="col">
                         <form action="/garderies/{{$nursery->id}}/edit" method="get">
                             @csrf
-                            <input class="bg-warning border border-warning rounded text-white p-2" value="Modifier"
-                                type="submit"></input>
+                            <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
                         </form>
                     </div>
                     <div class="col">
                         <form action="/garderies/{{$nursery->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
-                            <input class="bg-danger border border-danger rounded text-white p-2" value="Supprimer" type="submit"
+                            <input class="btn btn-danger text-white" value="Supprimer" type="submit"
                                 onclick="alert('Êtes-vous sûr de vouloir supprimer cette garderie ?');"></input>
                         </form>
                     </div>
