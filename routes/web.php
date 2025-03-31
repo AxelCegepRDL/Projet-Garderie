@@ -23,7 +23,7 @@ Route::delete('/garderies/{id}/delete', 'App\Http\Controllers\NurseryController@
 Route::delete('/garderies/clear', 'App\Http\Controllers\NurseryController@clear')->name('Clear list nursery');
 
 //Route for the ExpenseController :
-Route::get('/Expense', 'App\Http\Controllers\ExpenseController@index')->name('List of expenses');
+Route::get('/Expense', 'App\Http\Controllers\ExpenseController@index')->name('List the expenses');
 Route::get('/Expenses/{id}/edit', 'App\Http\Controllers\ExpenseController@formModifyExpense')->name('Form modify expense');
 Route::post('/Expenses/ajouter', 'App\Http\Controllers\ExpenseController@add')->name('Add a expense');
 Route::put('/Expenses/{id}/update', 'App\Http\Controllers\ExpenseController@update')->name('Modify a expense');
