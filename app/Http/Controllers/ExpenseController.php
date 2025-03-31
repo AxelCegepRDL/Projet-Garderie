@@ -26,12 +26,12 @@ class ExpenseController extends Controller
 
     public function add(Request $request)
     {
-        Nursery::create([
+        Expense::create([
             'dateTime' => now(),
             'amount' => $request->amount,
             'nursery_id' => $request->nursery_id,
             'commerce_id' => $request->commerce_id,
-            'category_expense_id' => $request->category_expense_id
+            'expense_categories_id' => $request->expense_categories_id
         ]);
         return redirect()->route('List of expenses');
     }

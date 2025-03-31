@@ -2,7 +2,7 @@
 
 @section('content')
     <h1 class="m-5">Liste des dépenses</h1>
-    <form action="{{ route('List the expenses') }}" method="get"  class="mx-5 mb-3">
+    <form action="{{ route('List the expenses') }}" method="get" class="mx-5 mb-3">
         <label for="nurseryId">Choisir la garderie :</label>
 
         @if ($nurseries->count() > 0)
@@ -69,9 +69,9 @@
                 <input type="text" name="amount" id="amount" class="col">
             </div>
             <div class="row my-1">
-                <label for="expenseCategorie" class="col">Catégorie de dépense</label>
+                <label for="expense_categories_id" class="col">Catégorie de dépense</label>
                 @if($expenseCategories->count() > 0)
-                    <select type="text" name="expenseCategorie" id="expenseCategorie" class="col">
+                    <select type="text" name="expense_categories_id" id="expense_categories_id" class="col">
                         @foreach($expenseCategories as $expenseCategorie)
                             <option value="{{ $expenseCategorie->id }}">{{ $expenseCategorie->description }}</option>
                         @endforeach
@@ -85,10 +85,10 @@
                 @if($commerces->count() > 0)
                     <div class="col">
                         @foreach($commerces as $commerce)
-                            <input type="radio" name="commerce" id="{{ $commerce->description }}" class="col"
+                            <input type="radio" name="commerce_id" id="{{ $commerce->description }}" class="col"
                                 value="{{ $commerce->id }}">
-                            <span> | </span>
                             <label for="{{ $commerce->description }}">{{ $commerce->description }}</label>
+                            <span> | </span>
                         @endforeach
                     </div>
                 @else
@@ -98,6 +98,7 @@
             <div class="row my-3">
                 <input type="submit" value="Ajouter">
             </div>
+            <input type="hidden" name="nursery_id" value="">
         </form>
     </div>
 @endsection
