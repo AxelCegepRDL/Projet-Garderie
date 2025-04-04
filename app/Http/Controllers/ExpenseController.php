@@ -62,19 +62,19 @@ class ExpenseController extends Controller
 
         $expense->save();
 
-        return redirect()->route('List of expenses');
+        return redirect()->route('List the expenses');
     }
 
     public function delete($id)
     {
         $expense = Expense::findOrFail($id);
         $expense->delete();
-        return redirect()->route('List of expenses');
+        return redirect()->route('List the expenses');
     }
 
     public function clear($id)
     {
         Expense::where('nursery_id', $id)->delete();
-        return redirect()->route('List of expenses');
+        return redirect()->route('List the expenses');
     }
 }
