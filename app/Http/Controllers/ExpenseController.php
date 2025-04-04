@@ -44,7 +44,7 @@ class ExpenseController extends Controller
 
     public function formModifyExpense($id)
     {
-        $expense = Nursery::findOrFail($id);
+        $expense = Expense::findOrFail($id);
         $expenseCategories = ExpenseCategory::all();
         $commerces = Commerce::all();
         $nurseries = Nursery::all();
