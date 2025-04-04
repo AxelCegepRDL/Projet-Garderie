@@ -42,8 +42,8 @@
                     <div class="col col-2">{{$expense->dateTime}}</div>
                     <div class="col">{{$expense->amount}}</div>
                     <div class="col col-2">{{ $expense->eligibleAmount }}</div>
-                    <div class="col col-3">{{$expense->expenseCategories->description}}</div>
-                    <div class="col">{{$expense->commerces->description}}</div>
+                    <div class="col col-3">{{$expense->expenseCategory->description}}</div>
+                    <div class="col">{{$expense->commerce->description}}</div>
                     <div class="col">
                         <form action="/Expenses/{{$expense->id}}/edit" method="get">
                             @csrf
