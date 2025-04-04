@@ -29,7 +29,7 @@
                     <div class="col">
                         @foreach($commerces as $commerce)
                             <input type="radio" name="commerce_id" id="{{ $commerce->description }}" class="col"
-                                value="{{ $commerce->id }}" {{ $commerce->id == $expense->commerce_id ? 'selected' : '' }} required>
+                                value="{{ $commerce->id }}" {{ $commerce->id == $expense->commerce_id ? 'checked' : '' }} required>
                             <label for="{{ $commerce->description }}">{{ $commerce->description }}</label>
                             <span> | </span>
                         @endforeach
@@ -41,7 +41,6 @@
             <div class="row my-3">
                 <input type="submit" value="Modifier">
             </div>
-            <input type="hidden" name="nursery_id" value="{{  request('nurseryId', $nurseries[0]->id) }}">
             <div class="row my-3">
                 <input type="button" onclick="history.back();" value="Annuler" />
             </div>

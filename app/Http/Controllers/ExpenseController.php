@@ -56,7 +56,7 @@ class ExpenseController extends Controller
 
         $expense->amount = $request->amount;
         $expense->commerce_id = $request->commerce_id;
-        $expense->category_expense_id = $request->category_expense_id;
+        $expense->expense_category_id = $request->expense_category_id;
 
         $expense->save();
 
