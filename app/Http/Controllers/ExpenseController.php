@@ -42,7 +42,7 @@ class ExpenseController extends Controller
         return redirect()->route('List the expenses', ['nurseryId' => $request->nursery_id]);
     }
 
-    public function formModifyNursery($id)
+    public function formModifyExpense($id)
     {
         $expense = Nursery::findOrFail($id);
         $expenseCategories = ExpenseCategory::all();
