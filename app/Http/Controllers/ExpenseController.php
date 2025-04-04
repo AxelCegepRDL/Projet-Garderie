@@ -39,7 +39,7 @@ class ExpenseController extends Controller
             'commerce_id' => $request->commerce_id,
             'expense_category_id' => $request->expense_category_id
         ]);
-        return redirect()->route('List the expenses');
+        return redirect()->route('List the expenses', ['nurseryId' => $request->nursery_id]);
     }
 
     public function formModifyNursery($id)
@@ -62,19 +62,20 @@ class ExpenseController extends Controller
 
         $expense->save();
 
-        return redirect()->route('List the expenses');
+        return redirect()->route('List the expenses', ['nurseryId' => $request->nursery_id]);
     }
 
     public function delete($id)
     {
         $expense = Expense::findOrFail($id);
+        $nurseryId = $expense->nursery_id;
         $expense->delete();
-        return redirect()->route('List the expenses');
+        return redirect()->route('List the expenses', ['nurseryId' => $nurseryId]);
     }
 
     public function clear($id)
     {
         Expense::where('nursery_id', $id)->delete();
-        return redirect()->route('List the expenses');
+        return redirect()->route('List the expenses', ['nurseryId' => $id]);
     }
 }
