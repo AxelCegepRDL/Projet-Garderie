@@ -47,8 +47,7 @@ class ExpenseController extends Controller
         $expense = Expense::findOrFail($id);
         $expenseCategories = ExpenseCategory::all();
         $commerces = Commerce::all();
-        $nurseries = Nursery::all();
-        return view('nurseryModify', compact('nurseries', 'commerces', 'expenseCategories', 'expense'));
+        return view('expenseModify', compact('commerces', 'expenseCategories', 'expense'));
     }
 
     public function update($id, Request $request)
@@ -56,13 +55,12 @@ class ExpenseController extends Controller
         $expense = Expense::findOrFail($id);
 
         $expense->amount = $request->amount;
-        $expense->nursery_id = $request->nursery_id;
         $expense->commerce_id = $request->commerce_id;
         $expense->category_expense_id = $request->category_expense_id;
 
         $expense->save();
 
-        return redirect()->route('List the expenses', ['nurseryId' => $request->nursery_id]);
+        return redirect()->route('List the expenses', ['nurseryId' => $expense->nursery_id]);
     }
 
     public function delete($id)
