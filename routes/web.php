@@ -29,3 +29,11 @@ Route::post('/Expenses/ajouter', 'App\Http\Controllers\ExpenseController@add')->
 Route::put('/Expenses/{id}/update', 'App\Http\Controllers\ExpenseController@update')->name('Modify a expense');
 Route::delete('/Expenses/{id}/delete', 'App\Http\Controllers\ExpenseController@delete')->name('Delete a expense');
 Route::delete('/Expenses/{id}/clear', 'App\Http\Controllers\ExpenseController@clear')->name('Clear list expenses');
+
+//Route for the ExpenseCategoryController
+Route::get('/ExpenseCategory', 'App\Http\Controllers\ExpenseCategoryController@index')->name('List the expense categories');
+Route::get('/ExpenseCategory/{id}/edit', 'App\Http\Controllers\ExpenseCategoryController@formModifyExpenseCategory')->name('Form modify expense category');
+Route::post('/ExpenseCategory/add', 'App\Http\Controllers\ExpenseCategoryController@add')->name('Add an expense category');
+Route::put('/ExpenseCategory/{id}/update', 'App\Http\Controllers\ExpenseCategoryController@update')->name('Update an expense category');
+Route::delete('/ExpenseCategory/{id}/delete', 'App\Http\Controllers\ExpenseCategoryController@delete')->name('Delete an expense category');
+Route::delete('/ExpenseCategory/clear', 'App\Http\Controllers\ExpenseCategoryController@clear')->name('Clear list expense categories');

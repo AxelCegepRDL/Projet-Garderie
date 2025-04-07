@@ -4,7 +4,7 @@
         <div class="col"><a href="{{ route('List nursery') }}">Garderies</a></div>
         <div class="col"><a href="{{ route('List the expenses') }}">Dépenses</a></div>
         <div class="col"><a href="#">Commerces</a></div>
-        <div class="col col-2"><a href="#">Catégories de dépense</a></div>
+        <div class="col col-2"><a href="{{ route('List the expense categories') }}">Catégories de dépense</a></div>
         <div class="col"><a href="#">Enfants</a></div>
         <div class="col"><a href="#">Educateurs</a></div>
         <div class="col"><a href="#">Présences</a></div>
