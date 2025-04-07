@@ -29,3 +29,11 @@ Route::post('/Expenses/ajouter', 'App\Http\Controllers\ExpenseController@add')->
 Route::put('/Expenses/{id}/update', 'App\Http\Controllers\ExpenseController@update')->name('Modify a expense');
 Route::delete('/Expenses/{id}/delete', 'App\Http\Controllers\ExpenseController@delete')->name('Delete a expense');
 Route::delete('/Expenses/{id}/clear', 'App\Http\Controllers\ExpenseController@clear')->name('Clear list expenses');
+
+// Route for the CommerceController
+Route::get('/commerce', 'App\Http\Controllers\CommerceController@index')->name('commerce.list');
+Route::get('/commerce/{id}/edit', 'App\Http\Controllers\CommerceController@formModify')->name('commerce.edit.form');
+Route::post('/commerce/add', 'App\Http\Controllers\CommerceController@add')->name('commerce.add');
+Route::post('/commerce/{id}/update', 'App\Http\Controllers\CommerceController@update')->name('commerce.update');
+Route::delete('/commerce/{id}/delete', 'App\Http\Controllers\CommerceController@delete')->name('commerce.delete');
+Route::delete('/commerce/clear', 'App\Http\Controllers\CommerceController@clear')->name('commerce.clear');
