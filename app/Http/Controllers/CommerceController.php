@@ -32,11 +32,10 @@ class CommerceController extends Controller
         return view('commerceModify', compact('commerce'));
     }
 
-    public function edit($id, Request $request)
+    public function update($id, Request $request)
     {
         $commerce = Commerce::findOrFail($id);
 
-        $commerce->description = $request->description;
         $commerce->address = $request->address;
         $commerce->phone = $request->phone;
 
