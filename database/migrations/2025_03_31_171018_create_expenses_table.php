@@ -14,9 +14,9 @@ return new class extends Migration {
             $table->id();
             $table->dateTime("dateTime");
             $table->decimal("amount", 13, 2);
-            $table->foreignId('nursery_id')->constrained();
-            $table->foreignId('commerce_id')->constrained();
-            $table->foreignId('expense_category_id')->constrained();
+            $table->foreignId('nursery_id')->constrained()->onDelete('cascade');
+            $table->foreignId('commerce_id')->constrained()->onDelete('cascade');
+            $table->foreignId('expense_category_id')->constrained()->onDelete('cascade');
         });
     }
 
