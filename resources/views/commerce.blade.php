@@ -18,7 +18,8 @@
                         @method('DELETE')
                         @csrf
                         <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                            onclick="comfirm('Êtes-vous sûr de vouloir vider la liste des commerces ?');"></input>
+                            onclick="comfirm('Êtes-vous sûr de vouloir vider la liste des commerces ?');"
+                            @if($commerces->count() == 0) disabled @endif ></input>
                     </form>
             </th>
         </tr>
@@ -43,7 +44,7 @@
                 </tr>
             @endforeach
         @else
-            <p>Aucun commerce à afficher</p>
+            <tr><td colspan="4"><em>Aucun commerce à afficher</em></td></tr>
         @endif
         </table>
     </div>

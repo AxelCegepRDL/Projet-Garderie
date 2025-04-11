@@ -22,4 +22,9 @@ class Expense extends Model
     {
         return $this->belongsTo(Commerce::class);
     }
+
+    public function nursery()
+    {
+        return $this->belongsTo(Nursery::class);
+    }
 }
