@@ -29,4 +29,31 @@
             </div>
         </form>
     </div>
+    <h2 class="m-5">Liste des dépenses</h2>
+    <div class="container border border-info p-3">
+        <table class="table">
+            <tr>
+                <th>Garderie</th>
+                <th>DateTemps</th>
+                <th>Montant</th>
+                <th>Montant admissible</th>
+                <th>Catégorie de dépense</th>
+                <th>Commerce</th>
+            </tr>
+            @if($expenses->count() > 0)
+                @foreach($expenses as $expense)
+                    <tr>
+                        <td>{{$expense->nursery->name}}</td>
+                        <td>{{$expense->dateTime}}</td>
+                        <td>{{$expense->amount}}</td>
+                        <td>{{$expense->eligibleAmount}}</td>
+                        <td>{{$expense->expenseCategory->description}}</td>
+                        <td>{{$expense->commerce->description}}</td>
+                    </tr>
+                @endforeach
+            @else
+                <tr><td colspan="4"><em>Aucune dépense à afficher pour ce commerce</em></td></tr>
+            @endif
+        </table>
+    </div>
 @endsection

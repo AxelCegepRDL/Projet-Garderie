@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Expense;
 use App\Models\Commerce;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,14 @@ class CommerceController extends Controller
     {
         $commerce = Commerce::findOrFail($id);
 
-        return view('commerceModify', compact('commerce'));
+        $expensesWithoutEligibleAmounts = Expense::where('commerce_id', $id)->get();
+
+        $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
+            $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);
+            return $expense;
+        });
+
+        return view('commerceModify', compact('commerce', 'expenses'));
     }
 
     public function update($id, Request $request)
