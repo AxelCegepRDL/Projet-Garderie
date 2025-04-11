@@ -27,23 +27,23 @@
     <h1 class="m-5">Liste des dépenses de cette catégorie</h1>
     <div class="container border border-info p-3">
         <div class="row row-cols-12 my-4">
+            <div class="col col text-info"><b>Garderie</b></div>
             <div class="col col-2 text-info"><b>DateTemps</b></div>
             <div class="col text-info"><b>Montant</b></div>
             <div class="col col-2 text-info"><b>Montant admissible</b></div>
             <div class="col col-3 text-info"><b>Catégorie de dépense</b></div>
             <div class="col text-info"><b>Commerce</b></div>
             <div class="col text-info"></div>
-            <div class="col text-info"></div>
         </div>
         @if ($expenses->count() > 0)
             @foreach ($expenses as $expense)
                 <div class="row row-cols-12 my-4">
+                    <div class="col col">{{$expense->nursery->name}}</div>
                     <div class="col col-2">{{$expense->dateTime}}</div>
                     <div class="col">{{$expense->amount}}</div>
                     <div class="col col-2">{{ $expense->eligibleAmount }}</div>
                     <div class="col col-3">{{$expense->expenseCategory->description}}</div>
                     <div class="col">{{$expense->commerce->description}}</div>
-                    <div class="col"></div>
                     <div class="col"></div>
                 </div>
             @endforeach
