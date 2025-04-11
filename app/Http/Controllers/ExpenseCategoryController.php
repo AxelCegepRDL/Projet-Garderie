@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ExpenseCategory;
+use App\Models\Expense;
 use Illuminate\Http\Request;
+use App\Models\ExpenseCategory;
 
 class ExpenseCategoryController extends Controller
 {
@@ -13,35 +14,45 @@ class ExpenseCategoryController extends Controller
         return view('expenseCategory', compact('expenseCategories'));
     }
 
-    public function add(Request $request){
+    public function add(Request $request)
+    {
         ExpenseCategory::create([
-            'description'=>$request->description,
-            'percentage'=>$request->percentage
+            'description' => $request->description,
+            'percentage' => $request->percentage
         ]);
         return redirect()->route('List the expense categories');
     }
 
-    public function formModifyExpenseCategory($id){
+    public function formModifyExpenseCategory($id)
+    {
         $expenseCategory = ExpenseCategory::findOrFail($id);
-        $expenseCategories = ExpenseCategory::all();
-        return view('expenseCategoryModify', compact('expenseCategory','expenseCategories'));
+        $expensesWithoutEligibleAmounts = Expense::where('expense_category_id', $id)->get();
+
+        $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
+            $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);
+            return $expense;
+        });
+        return view('expenseCategoryModify', compact('expenseCategory', 'expenses'));
     }
 
-    public function update($id, Request $request){
+    public function update($id, Request $request)
+    {
         $expenseCategory = ExpenseCategory::findOrFail($id);
-        $expenseCategory->description = $request->description;        
+        $expenseCategory->description = $request->description;
         $expenseCategory->percentage = $request->percentage;
         $expenseCategory->save();
         return redirect()->route('List the expense categories');
     }
 
-    public function delete($id){
-        $expenseCategory=ExpenseCategory::findOrFail($id);
+    public function delete($id)
+    {
+        $expenseCategory = ExpenseCategory::findOrFail($id);
         $expenseCategory->delete();
         return redirect()->route('List the expense categories');
     }
 
-    public function clear(){
+    public function clear()
+    {
         ExpenseCategory::query()->delete();
         return redirect()->route('List the expense categories');
     }
