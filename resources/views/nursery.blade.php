@@ -4,11 +4,11 @@
     <h1 class="m-5">Liste des garderies</h1>
     <div class="container border border-info p-3">
         <div class="row row-cols-12">
-            <div class="col col-2">Nom</div>
-            <div class="col col-3">Adresse</div>
-            <div class="col col-2">Ville</div>
-            <div class="col">Province</div>
-            <div class="col">Telephone</div>
+            <div class="col col-2 text-info"><b>Nom</b></div>
+            <div class="col col-3 text-info"><b>Adresse</b></div>
+            <div class="col col-2 text-info"><b>Ville</b></div>
+            <div class="col text-info"><b>Province</b></div>
+            <div class="col text-info"><b>Telephone</b></div>
             <div class="col"></div>
             <div class="col">
                 <form action="{{route('Clear list nursery')}}" method="post">

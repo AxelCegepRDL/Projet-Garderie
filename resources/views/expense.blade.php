@@ -20,12 +20,12 @@
         @endif
     </form>
     <div class="container border border-info p-3">
-        <div class="row row-cols-12">
-            <div class="col col-2">DateTemps</div>
-            <div class="col">Montant</div>
-            <div class="col col-2">Montant admissible</div>
-            <div class="col col-3">Catégorie de dépense</div>
-            <div class="col">Commerce</div>
+        <div class="row row-cols-12 text-info">
+            <div class="col col-2"><b>DateTemps</b></div>
+            <div class="col"><b>Montant</b></div>
+            <div class="col col-2"><b>Montant admissible</b></div>
+            <div class="col col-3"><b>Catégorie de dépense</b></div>
+            <div class="col"><b>Commerce</b></div>
             <div class="col"></div>
             <div class="col">
                 <form action="/Expenses/{{ request('nurseryId', $nurseries[0]->id) }}/clear" method="post">
