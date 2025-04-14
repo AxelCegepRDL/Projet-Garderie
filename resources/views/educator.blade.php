@@ -21,7 +21,7 @@
                 </form>
             </div>
         </div>
-        @if ($nurseries->count() > 0)
+        @if ($educators->count() > 0)
             @foreach ($educators as $educator)
                 <div class="row row-cols-12 my-4">
                     <div class="col">{{$educator->firstName}}</div>
