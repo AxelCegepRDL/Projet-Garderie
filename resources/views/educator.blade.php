@@ -4,57 +4,68 @@
     <h1 class="m-5">Liste des éducateur</h1>
     <div class="container border border-info p-3">
         <div class="row row-cols-12">
-        <div class="col col-1 text-info"><b>Prénom</b></div>
-            <div class="col col-1 text-info"><b>Nom</b></div>
-            <div class="col col-3 text-info"><b>Adresse</b></div>
+            <div class="col col-1 text-info"><b>Prénom</b></div>
+            <div class="col text-info"><b>Nom</b></div>
+            <div class="col text-info"><b>Date de naissance</b></div>
+            <div class="col col-2 text-info"><b>Adresse</b></div>
             <div class="col col-2 text-info"><b>Ville</b></div>
             <div class="col text-info"><b>Province</b></div>
             <div class="col text-info"><b>Telephone</b></div>
             <div class="col"></div>
             <div class="col">
-                <form action="{{route('Clear list nursery')}}" method="post">
+                <form action="{{route('Clear list educator')}}" method="post">
                     @method('DELETE')
                     @csrf
                     <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des garderies ?');"></input>
+                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des éducateurs ?');"></input>
                 </form>
             </div>
         </div>
         @if ($nurseries->count() > 0)
-            @foreach ($nurseries as $nursery)
+            @foreach ($educators as $educator)
                 <div class="row row-cols-12 my-4">
-                    <div class="col col-2">{{$nursery->name}}</div>
-                    <div class="col col-3">{{$nursery->address}}</div>
-                    <div class="col col-2">{{$nursery->city}}</div>
-                    <div class="col">{{$nursery->state->description}}</div>
-                    <div class="col">{{$nursery->phone}}</div>
+                    <div class="col">{{$educator->firstName}}</div>
+                    <div class="col">{{$educator->lastName}}</div>
+                    <div class="col">{{ $educator->dateOfBirth }}</div>
+                    <div class="col col-2">{{$educator->address}}</div>
+                    <div class="col col-2">{{$educator->city}}</div>
+                    <div class="col">{{$educator->state->description}}</div>
+                    <div class="col">{{$educator->phone}}</div>
                     <div class="col">
-                        <form action="/garderies/{{$nursery->id}}/edit" method="get">
+                        <form action="/Educator/{{$educator->id}}/edit" method="get">
                             @csrf
                             <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
                         </form>
                     </div>
                     <div class="col">
-                        <form action="/garderies/{{$nursery->id}}/delete" method="post">
+                        <form action="/Educator/{{$educator->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette garderie ?');"></input>
+                                onclick="alert('Êtes-vous sûr de vouloir supprimer cet éducateur ?');"></input>
                         </form>
                     </div>
                 </div>
             @endforeach
         @else
-            <div class="col "><span>Aucune garderie...</span></div>
+            <div class="col "><span>Aucun éducateur...</span></div>
         @endif
     </div>
-    <h1 class="m-5">Ajouter une garderie</h1>
+    <h1 class="m-5">Ajouter un éducateur</h1>
     <div class="container">
-        <form action="{{ route('Add a nursery') }}" method="POST">
+        <form action="{{ route('Add an educator') }}" method="POST">
             @csrf
             <div class="row my-1">
-                <label for="name" class="col">Nom</label>
-                <input type="text" name="name" id="name" class="col">
+                <label for="firstName" class="col">Prénom</label>
+                <input type="text" name="firstName" id="firstName" class="col">
+            </div>
+            <div class="row my-1">
+                <label for="lastName" class="col">Nom</label>
+                <input type="text" name="lastName" id="lastName" class="col">
+            </div>
+            <div class="row my-1">
+                <label for="dateOfBirth" class="col">Date de naissance</label>
+                <input type="date" name="dateOfBirth" id="dateOfBirth" class="col">
             </div>
             <div class="row my-1">
                 <label for="address" class="col">Adresse</label>
