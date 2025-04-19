@@ -5,8 +5,8 @@
         <div class="col"><a href="{{ route('List the expenses') }}">Dépenses</a></div>
         <div class="col"><a href="{{ route('commerce.list') }}">Commerces</a></div>
         <div class="col col-2"><a href="{{ route('List the expense categories') }}">Catégories de dépense</a></div>
-        <div class="col"><a href="#">Enfants</a></div>
-        <div class="col"><a href="#">Educateurs</a></div>
+        <div class="col"><a href="{{ route('child.list') }}">Enfants</a></div>
+        <div class="col"><a href="{{ route('List educator') }}">Éducateurs</a></div>
         <div class="col"><a href="#">Présences</a></div>
         <div class="col"><a href="#">Rapport</a></div>
     </div>

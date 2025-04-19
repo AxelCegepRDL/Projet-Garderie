@@ -45,3 +45,19 @@ Route::post('/commerce/add', 'App\Http\Controllers\CommerceController@add')->nam
 Route::put('/commerce/{id}/update', 'App\Http\Controllers\CommerceController@update')->name('commerce.update');
 Route::delete('/commerce/{id}/delete', 'App\Http\Controllers\CommerceController@delete')->name('commerce.delete');
 Route::delete('/commerce/clear', 'App\Http\Controllers\CommerceController@clear')->name('commerce.clear');
+
+// Routes for the EducatorController :
+Route::get('/Educator', 'App\Http\Controllers\EducatorController@index')->name('List educator');
+Route::get('/Educator/{id}/edit', 'App\Http\Controllers\EducatorController@formModifyEducator')->name('Form modify educator');
+Route::post('/Educator/add', 'App\Http\Controllers\EducatorController@add')->name('Add an educator');
+Route::put('/Educator/{id}/update', 'App\Http\Controllers\EducatorController@update')->name('Modify educator');
+Route::delete('/Educator/{id}/delete', 'App\Http\Controllers\EducatorController@delete')->name('Delete educator');
+Route::delete('/Educator/clear', 'App\Http\Controllers\EducatorController@clear')->name('Clear list educator');
+
+// Route for the ChildController
+Route::get('/child', 'App\Http\Controllers\ChildController@index')->name('child.list');
+Route::get('/child/{id}/edit', 'App\Http\Controllers\ChildController@formModify')->name('child.edit.form');
+Route::post('/child/add', 'App\Http\Controllers\ChildController@add')->name('child.add');
+Route::put('/child/{id}/update', 'App\Http\Controllers\ChildController@update')->name('child.update');
+Route::delete('/child/{id}/delete', 'App\Http\Controllers\ChildController@delete')->name('child.delete');
+Route::delete('/child/clear', 'App\Http\Controllers\ChildController@clear')->name('child.clear');
