@@ -13,7 +13,7 @@ class ChildController extends Controller
         $children = Child::all();
         $states = State::all();
 
-        return view('child.list', compact('children', 'states'));
+        return view('child', compact('children', 'states'));
     }
 
     public function add(Request $request)
@@ -30,12 +30,12 @@ class ChildController extends Controller
         return redirect()->route('child.list');
     }
 
-    public function formModifyEducator($id)
+    public function formModify($id)
     {
         $child = Child::findOrFail($id);
         $states = State::all();
 
-        return view('child.modify.form', compact('child', 'states'));
+        return view('childModify', compact('child', 'states'));
     }
 
     public function update($id, Request $request)
