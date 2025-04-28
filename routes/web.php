@@ -61,3 +61,9 @@ Route::post('/child/add', 'App\Http\Controllers\ChildController@add')->name('chi
 Route::put('/child/{id}/update', 'App\Http\Controllers\ChildController@update')->name('child.update');
 Route::delete('/child/{id}/delete', 'App\Http\Controllers\ChildController@delete')->name('child.delete');
 Route::delete('/child/clear', 'App\Http\Controllers\ChildController@clear')->name('child.clear');
+
+// Routes for the PresenceController
+Route::get('/presence', 'App\Http\Controllers\PresenceController@index')->name('presence.list');
+Route::post('/presence/add', 'App\Http\Controllers\PresenceController@add')->name('child.add');
+Route::delete('/presence/{id}/delete', 'App\Http\Controllers\PresenceController@delete')->name('child.delete');
+Route::delete('/presence/{id}/clear', 'App\Http\Controllers\PresenceController@clear')->name('presence.clear');
