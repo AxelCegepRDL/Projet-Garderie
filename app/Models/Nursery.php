@@ -17,4 +17,8 @@ class Nursery extends Model
     {
         return $this->belongsTo(State::class);
     }
+
+    public function expenses(){
+        return $this->hasMany(Expense::class);
+    }
 }
