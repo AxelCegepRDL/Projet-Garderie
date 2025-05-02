@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Presence;
 use App\Models\State;
 use App\Models\Child;
 use Illuminate\Http\Request;
@@ -34,8 +35,9 @@ class ChildController extends Controller
     {
         $child = Child::findOrFail($id);
         $states = State::all();
+        $presences = Presence::where('child_id', $id)->get();
 
-        return view('childModify', compact('child', 'states'));
+        return view('childModify', compact('child', 'states', 'presences'));
     }
 
     public function update($id, Request $request)

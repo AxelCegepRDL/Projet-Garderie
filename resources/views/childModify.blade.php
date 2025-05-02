@@ -50,4 +50,35 @@
             </div>
         </form>
     </div>
+    <h1 class="m-5">Liste des présences</h1>
+    <div class="container border border-info p-3">
+        <table class="table">
+            <tr>
+                <th>Garderie</th>
+                <th>Date</th>
+                <th>Nom enfant</th>
+                <th>Prénom enfant</th>
+                <th>Date naissance enfant</th>
+                <th>Nom éducateur</th>
+                <th>Prénom éducateur</th>
+                <th>Date naissance éducateur</th>
+            </tr>
+            @if($presences->count() > 0)
+                @foreach($presences as $presence)
+                    <tr>
+                        <td>{{$presence->nursery->name}}</td>
+                        <td>{{$presence->date}}</td>
+                        <td>{{$presence->child->lastName}}</td>
+                        <td>{{$presence->child->firstName}}</td>
+                        <td>{{$presence->child->dateOfBirth}}</td>
+                        <td>{{$presence->educator->lastName}}</td>
+                        <td>{{$presence->educator->firstName}}</td>
+                        <td>{{$presence->educator->dateOfBirth}}</td>
+                    </tr>
+                @endforeach
+            @else
+                <tr><td colspan="4"><em>Aucune présence à afficher</em></td></tr>
+            @endif
+        </table>
+    </div>
 @endsection

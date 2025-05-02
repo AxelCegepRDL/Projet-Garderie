@@ -7,7 +7,7 @@
         }
     </style>
     <h1 class="m-5">Liste des présences</h1>
-    <form action="{{ route('List the expenses') }}" method="get" class="mx-5 mb-3">
+    <form action="{{ route('presence.list') }}" method="get" class="mx-5 mb-3">
         <label for="nurseryId">Choisir la garderie :</label>
         @if ($nurseries->count() > 0)
             <select name="nurseryId" id="nurseryId" oninput="submit();">
