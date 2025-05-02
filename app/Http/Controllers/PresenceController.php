@@ -23,7 +23,7 @@ class PresenceController extends Controller
             $presences = [];
         }
 
-        return view('presences.index', compact('nurseries', 'presences', 'children', 'educators'));
+        return view('presence', compact('nurseries', 'presences', 'children', 'educators'));
     }
 
     public function add(Request $request){
@@ -33,19 +33,19 @@ class PresenceController extends Controller
             'child_id' => $request->child_id,
             'educator_id' => $request->educator_id
         ]);
-        return redirect()->route('presences.index', ['nurseryId' => $request->nursery_id]);
+        return redirect()->route('presence.list', ['nurseryId' => $request->nursery_id]);
     }
 
     public function delete($id){
         $presence = Presence::findOrFail($id);
         $nursery_id = $presence->nursery_id;
         $presence->delete();
-        return redirect()->route('presences.index', ['nurseryId' => $nursery_id]);
+        return redirect()->route('presence.list', ['nurseryId' => $nursery_id]);
     }
 
     public function clear($id)
     {
         Presence::where('nursery_id', $id)->delete();
-        return redirect()->route('presences.index', ['nurseryId' => $id]);
+        return redirect()->route('presence.list', ['nurseryId' => $id]);
     }
 }
