@@ -1,8 +1,11 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Child;
 use App\Models\State;
+use App\Models\Nursery;
 use App\Models\Educator;
+use App\Models\Presence;
 use Illuminate\Http\Request;
 
 class EducatorController extends Controller
@@ -32,7 +35,15 @@ class EducatorController extends Controller
     {
         $educator = Educator::findOrFail($id);
         $states = State::all();
-        return view('educatorModify', compact('educator', 'states'));
+        $presences = Presence::where('educator_id', $id)->get();
+        foreach($presences as $p){
+            $p->setAttribute('nursery', Nursery::where('id', $p->nursery_id)->value('name')); 
+            $child = Child::where('id', $p->child_id)->first();
+            $p->setAttribute('childFirstName', $child->firstName);
+            $p->setAttribute('childLastName', $child->lastName);
+            $p->setAttribute('childBirthDate', $child->dateOfBirth);
+        }
+        return view('educatorModify', compact('educator', 'states', 'presences'));
     }
 
     public function update($id, Request $request)
