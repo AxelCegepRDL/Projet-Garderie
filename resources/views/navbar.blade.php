@@ -8,6 +8,6 @@
         <div class="col"><a href="{{ route('child.list') }}">Enfants</a></div>
         <div class="col"><a href="{{ route('List educator') }}">Éducateurs</a></div>
         <div class="col"><a href="{{ route('presence.list') }}">Présences</a></div>
-        <div class="col"><a href="#">Rapport</a></div>
+        <div class="col"><a href="{{ route('show report') }}">Rapport</a></div>
     </div>
 </div>
