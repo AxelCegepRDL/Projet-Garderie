@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\State;
+use App\Models\Expense;
 use App\Models\Nursery;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,13 @@ class NurseryController extends Controller
     {
         $nursery = Nursery::findOrFail($id);
         $states = State::all();
-        return view('nurseryModify', compact('nursery', 'states'));
+
+        $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $id)->get();
+        $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
+            $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);
+            return $expense;
+        });
+        return view('nurseryModify', compact('nursery', 'states', 'expenses'));
     }
 
     public function update($id, Request $request)
