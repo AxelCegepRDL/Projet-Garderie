@@ -17,4 +17,8 @@ class Educator extends Model
     {
         return $this->belongsTo(State::class);
     }
+
+    public function presences(){
+        return $this->hasMany(Presence::class);
+    }
 }

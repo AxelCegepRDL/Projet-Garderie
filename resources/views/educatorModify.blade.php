@@ -50,4 +50,33 @@
             </div>
         </form>
     </div>
+    <h1 class="m-5">Liste des des présence de cet éducateur</h1>
+    <div class="container border border-info p-3">
+        <div class="row row-cols-12 my-4">
+            <div class="col col-2 text-info"><b>Garderie</b></div>
+            <div class="col col-2 text-info"><b>Date</b></div>
+            <div class="col text-info"><b>Nom enfant</b></div>
+            <div class="col text-info"><b>Prénom enfant</b></div>
+            <div class="col col-2 text-info"><b>Date naissance enfant</b></div>
+            <div class="col text-info"><b>Nom éducateur</b></div>
+            <div class="col text-info"><b>Prénom éducateur</b></div>
+            <div class="col col-2 text-info"><b>Date naissance éducateur</b></div>
+        </div>
+        @if ($presences->count() > 0)
+            @foreach ($presences as $p)
+                <div class="row row-cols-12 my-4">
+                    <div class="col col-2">{{$p->nursery}}</div>
+                    <div class="col col-2">{{$p->date}}</div>
+                    <div class="col">{{$p->childLastName}}</div>
+                    <div class="col">{{$p->childFirstName}}</div>
+                    <div class="col col-2">{{$p->childBirthDate}}</div>
+                    <div class="col">{{$educator->lastName}}</div>
+                    <div class="col">{{$educator->firstName}}</div>
+                    <div class="col col-2">{{$educator->dateOfBirth}}</div>
+                </div>
+            @endforeach
+        @else
+            <div class="col "><span>Aucune présence pour cet éducateur...</span></div>
+        @endif
+    </div>
 @endsection
