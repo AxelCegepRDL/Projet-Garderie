@@ -19,13 +19,13 @@ class StateController extends Controller
         State::create([
             'description' => $request->description
         ]);
-        return redirect()->route('state');
+        return redirect()->route('state list');
     }
 
     public function delete($id)
     {
         $state = State::findOrFail($id);
         $state->delete();
-        return redirect()->route('state');
+        return redirect()->route('state list');
     }
 }
