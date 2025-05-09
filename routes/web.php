@@ -71,7 +71,7 @@ Route::delete('/presence/{id}/clear', 'App\Http\Controllers\PresenceController@c
 //Routes for the StateController
 Route::get('/state', 'App\Http\Controllers\StateController@index')->name('state list');
 Route::post('/state/add', 'App\Http\Controllers\StateController@add')->name('add state');
-Route::delete('/state/delete', 'App\Http\Controllers\StateController@delete')->name('delete state');
+Route::delete('/state/{id}/delete', 'App\Http\Controllers\StateController@delete')->name('delete state');
 
-//Routes for the StateController
+//Routes for the ReportController
 Route::get('/report', 'App\Http\Controllers\ReportController@index')->name('show report');
