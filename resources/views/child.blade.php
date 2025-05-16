@@ -10,19 +10,20 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Date de naissance</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Province</th>
-                <th>Téléphone</th>
+                <th class="text-info">Nom</th>
+                <th class="text-info">Prénom</th>
+                <th class="text-info">Date de naissance</th>
+                <th class="text-info">Adresse</th>
+                <th class="text-info">Ville</th>
+                <th class="text-info">Province</th>
+                <th class="text-info">Téléphone</th>
+                <th></th>
                 <th>
                     <form action="{{route('child.clear')}}" method="post">
                         @method('DELETE')
                         @csrf
                         <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                            onclick="comfirm('Êtes-vous sûr de vouloir vider la liste des enfants ?');"
+                            onclick="return confirm('Êtes-vous sûr de vouloir vider la liste des enfants ?');"
                             @if($children->count() == 0) disabled @endif ></input>
                     </form>
             </th>
@@ -41,18 +42,19 @@
                         <form action="/child/{{$child->id}}/edit" method="get">
                             @csrf
                             <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
-                        </form>
+                        </form></td>
+                    <td>
                         <form action="/child/{{$child->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="confirm('Êtes-vous sûr de vouloir supprimer cet enfant ?');"></input>
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enfant ?');"></input>
                         </form>
                     </td>
                 </tr>
             @endforeach
         @else
-            <tr><td colspan="4"><em>Aucun enfant à afficher</em></td></tr>
+            <tr><td colspan="9"><em>Aucun enfant à afficher</em></td></tr>
         @endif
         </table>
     </div>
@@ -92,8 +94,8 @@
                 <label for="phone" class="col">Téléphone</label>
                 <input type="text" pattern="{0 - 9}" name="phone" id="phone" class="col">
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto" type="submit" value="Ajouter">
             </div>
         </form>
     </div>

@@ -10,7 +10,7 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Description</th>
+                <th class="text-info">Description</th>
                 <th></th>
         </tr>
         @if($states->count() > 0)
@@ -22,7 +22,7 @@
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="confirm('Êtes-vous sûr de vouloir supprimer cet état ?');">
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet état ?');">
                         </form>
                     </td>
                 </tr>
@@ -40,8 +40,8 @@
                 <label for="description" class="col">Description</label>
                 <input type="text" name="description" id="description" class="col">
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto" type="submit" value="Ajouter">
             </div>
         </form>
     </div>

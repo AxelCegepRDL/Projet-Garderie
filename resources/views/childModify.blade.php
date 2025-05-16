@@ -54,14 +54,14 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Garderie</th>
-                <th>Date</th>
-                <th>Nom enfant</th>
-                <th>Prénom enfant</th>
-                <th>Date naissance enfant</th>
-                <th>Nom éducateur</th>
-                <th>Prénom éducateur</th>
-                <th>Date naissance éducateur</th>
+                <th class="text-info">Garderie</th>
+                <th class="text-info">Date</th>
+                <th class="text-info">Nom enfant</th>
+                <th class="text-info">Prénom enfant</th>
+                <th class="text-info">Date naissance enfant</th>
+                <th class="text-info">Nom éducateur</th>
+                <th class="text-info">Prénom éducateur</th>
+                <th class="text-info">Date naissance éducateur</th>
             </tr>
             @if($presences->count() > 0)
                 @foreach($presences as $presence)
@@ -77,7 +77,7 @@
                     </tr>
                 @endforeach
             @else
-                <tr><td colspan="4"><em>Aucune présence à afficher</em></td></tr>
+                <tr><td colspan="8"><em>Aucune présence à afficher pour cet enfant...</em></td></tr>
             @endif
         </table>
     </div>

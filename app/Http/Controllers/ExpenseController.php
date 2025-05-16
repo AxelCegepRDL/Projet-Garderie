@@ -14,9 +14,9 @@ class ExpenseController extends Controller
     {
         $nurseries = Nursery::all();
         if (isset($request->nurseryId)) {
-            $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $request->nurseryId)->get();
+            $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $request->nurseryId)->orderBy('dateTime', 'desc')->get();
         } else if ($nurseries->count() > 0) {
-            $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $nurseries[0]->id)->get();
+            $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $nurseries[0]->id)->orderBy('dateTime', 'desc')->get();
         } else {
             $expensesWithoutEligibleAmounts = [];
         }

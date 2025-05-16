@@ -20,49 +20,52 @@
         @endif
     </form>
     <div class="container border border-info p-3">
-        <div class="row row-cols-12 text-info">
-            <div class="col col-2"><b>DateTemps</b></div>
-            <div class="col"><b>Montant</b></div>
-            <div class="col col-2"><b>Montant admissible</b></div>
-            <div class="col col-3"><b>Catégorie de dépense</b></div>
-            <div class="col"><b>Commerce</b></div>
-            <div class="col"></div>
-            <div class="col">
-                <form action="/Expenses/{{ request('nurseryId', $nurseries[0]->id) }}/clear" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <input class="btn btn-danger" value="Vider la liste" type="submit"
-                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des dépenses ?');"></input>
-                </form>
-            </div>
-        </div>
-        @if ($expenses->count() > 0)
-            @foreach ($expenses as $expense)
-                <div class="row row-cols-12 my-4">
-                    <div class="col col-2">{{$expense->dateTime}}</div>
-                    <div class="col">{{$expense->amount}}</div>
-                    <div class="col col-2">{{ $expense->eligibleAmount }}</div>
-                    <div class="col col-3">{{$expense->expenseCategory->description}}</div>
-                    <div class="col">{{$expense->commerce->description}}</div>
-                    <div class="col">
-                        <form action="/Expenses/{{$expense->id}}/edit" method="get">
-                            @csrf
-                            <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
-                        </form>
-                    </div>
-                    <div class="col">
-                        <form action="/Expenses/{{$expense->id}}/delete" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <input class="btn btn-danger" value="Supprimer" type="submit"
-                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette dépense ?');"></input>
-                        </form>
-                    </div>
-                </div>
-            @endforeach
-        @else
-            <div class="col "><span>Aucune dépense...</span></div>
-        @endif
+        <table class="table">
+            <tr>
+                <th class="text-info"><b>DateTemps</b></th>
+                <th class="text-info"><b>Montant</b></th>
+                <th class="text-info"><b>Montant admissible</b></th>
+                <th class="text-info"><b>Catégorie de dépense</b></th>
+                <th class="text-info"><b>Commerce</b></th>
+                <th></th>
+                <th>
+                    <form action="/Expenses/{{ request('nurseryId', $nurseries[0]->id) }}/clear" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <input class="btn btn-danger" value="Vider la liste" type="submit"
+                               onclick="return confirm('Êtes-vous sûr de vouloir vider la liste des dépenses ?');"
+                               @if($expenses->count() == 0) disabled @endif>
+                    </form>
+                </th>
+            </tr>
+            @if ($expenses->count() > 0)
+                @foreach ($expenses as $expense)
+                    <tr>
+                        <td>{{$expense->dateTime}}</td>
+                        <td>{{ number_format($expense->amount, 2, ",", " ") }} $</td>
+                        <td>{{ number_format($expense->eligibleAmount, 2, ",", " ") }} $</td>
+                        <td>{{$expense->expenseCategory->description}}</td>
+                        <td>{{$expense->commerce->description}}</td>
+                        <td>
+                            <form action="/Expenses/{{$expense->id}}/edit" method="get">
+                                @csrf
+                                <input class="btn btn-warning text-white" value="Modifier" type="submit">
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/Expenses/{{$expense->id}}/delete" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <input class="btn btn-danger" value="Supprimer" type="submit"
+                                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette dépense ?');">
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <tr><td colspan="8"><em>Aucune dépense à afficher</em></td></tr>
+            @endif
+        </table>
     </div>
     <h1 class="m-5">Ajouter une dépense</h1>
     <div class="container">
@@ -75,7 +78,7 @@
             <div class="row my-1">
                 <label for="expense_category_id" class="col">Catégorie de dépense</label>
                 @if($expenseCategories->count() > 0)
-                    <select type="text" name="expense_category_id" id="expense_category_id" class="col" required>
+                    <select name="expense_category_id" id="expense_category_id" class="col" required>
                         @foreach($expenseCategories as $expenseCategorie)
                             <option value="{{ $expenseCategorie->id }}">{{ $expenseCategorie->description }}</option>
                         @endforeach
@@ -99,8 +102,8 @@
                     <span class="col">Aucun commerce disponible...</span>
                 @endif
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto" type="submit" value="Ajouter">
             </div>
             <input type="hidden" name="nursery_id" value="{{  request('nurseryId', $nurseries[0]->id) }}">
         </form>

@@ -30,7 +30,7 @@ class CommerceController extends Controller
     {
         $commerce = Commerce::findOrFail($id);
 
-        $expensesWithoutEligibleAmounts = Expense::where('commerce_id', $id)->get();
+        $expensesWithoutEligibleAmounts = Expense::where('commerce_id', $id)->orderBy('dateTime', 'desc')->get();
 
         $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
             $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);
@@ -62,5 +62,7 @@ class CommerceController extends Controller
     public function clear()
     {
         Commerce::query()->delete();
+
+        return redirect()->route('commerce.list');
     }
 }

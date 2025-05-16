@@ -52,31 +52,33 @@
     </div>
     <h1 class="m-5">Liste des des présence de cet éducateur</h1>
     <div class="container border border-info p-3">
-        <div class="row row-cols-12 my-4">
-            <div class="col col-2 text-info"><b>Garderie</b></div>
-            <div class="col col-2 text-info"><b>Date</b></div>
-            <div class="col text-info"><b>Nom enfant</b></div>
-            <div class="col text-info"><b>Prénom enfant</b></div>
-            <div class="col col-2 text-info"><b>Date naissance enfant</b></div>
-            <div class="col text-info"><b>Nom éducateur</b></div>
-            <div class="col text-info"><b>Prénom éducateur</b></div>
-            <div class="col col-2 text-info"><b>Date naissance éducateur</b></div>
-        </div>
-        @if ($presences->count() > 0)
-            @foreach ($presences as $p)
-                <div class="row row-cols-12 my-4">
-                    <div class="col col-2">{{$p->nursery}}</div>
-                    <div class="col col-2">{{$p->date}}</div>
-                    <div class="col">{{$p->childLastName}}</div>
-                    <div class="col">{{$p->childFirstName}}</div>
-                    <div class="col col-2">{{$p->childBirthDate}}</div>
-                    <div class="col">{{$educator->lastName}}</div>
-                    <div class="col">{{$educator->firstName}}</div>
-                    <div class="col col-2">{{$educator->dateOfBirth}}</div>
-                </div>
-            @endforeach
-        @else
-            <div class="col "><span>Aucune présence pour cet éducateur...</span></div>
-        @endif
+        <table class="table">
+            <tr>
+                <th class="text-info"><b>Garderie</b></th>
+                <th class="text-info"><b>Date</b></th>
+                <th class="text-info"><b>Nom enfant</b></th>
+                <th class="text-info"><b>Prénom enfant</b></th>
+                <th class="text-info"><b>Date naissance enfant</b></th>
+                <th class="text-info"><b>Nom éducateur</b></th>
+                <th class="text-info"><b>Prénom éducateur</b></th>
+                <th class="text-info"><b>Date naissance éducateur</b></th>
+            </tr>
+            @if ($presences->count() > 0)
+                @foreach ($presences as $p)
+                    <tr>
+                        <td>{{$p->nursery}}</td>
+                        <td>{{$p->date}}</td>
+                        <td>{{$p->childLastName}}</td>
+                        <td>{{$p->childFirstName}}</td>
+                        <td>{{$p->childBirthDate}}</td>
+                        <td>{{$educator->lastName}}</td>
+                        <td>{{$educator->firstName}}</td>
+                        <td>{{$educator->dateOfBirth}}</td>
+                    </tr>
+                @endforeach
+            @else
+                <tr><td colspan="8"><em>Aucune présence à afficher pour cet éducateur</em></td></tr>
+            @endif
+        </table>
     </div>
 @endsection

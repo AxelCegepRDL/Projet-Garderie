@@ -10,15 +10,16 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Description</th>
-                <th>Adresse</th>
-                <th>Téléphone</th>
+                <th class="text-info">Description</th>
+                <th class="text-info">Adresse</th>
+                <th class="text-info">Téléphone</th>
+                <th></th>
                 <th>
                     <form action="{{route('commerce.clear')}}" method="post">
                         @method('DELETE')
                         @csrf
                         <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                            onclick="comfirm('Êtes-vous sûr de vouloir vider la liste des commerces ?');"
+                            onclick="return confirm('Êtes-vous sûr de vouloir vider la liste des commerces ?');"
                             @if($commerces->count() == 0) disabled @endif ></input>
                     </form>
             </th>
@@ -33,18 +34,19 @@
                         <form action="/commerce/{{$commerce->id}}/edit" method="get">
                             @csrf
                             <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
-                        </form>
+                        </form></td>
+                    <td>
                         <form action="/commerce/{{$commerce->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="confirm('Êtes-vous sûr de vouloir supprimer cette garderie ?');"></input>
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette garderie ?');"></input>
                         </form>
                     </td>
                 </tr>
             @endforeach
         @else
-            <tr><td colspan="4"><em>Aucun commerce à afficher</em></td></tr>
+            <tr><td colspan="5"><em>Aucun commerce à afficher</em></td></tr>
         @endif
         </table>
     </div>
@@ -64,8 +66,8 @@
                 <label for="phone" class="col">Téléphone</label>
                 <input type="text" pattern="{0 - 9}" name="phone" id="phone" class="col">
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto" type="submit" value="Ajouter">
             </div>
         </form>
     </div>

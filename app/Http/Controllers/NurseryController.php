@@ -33,7 +33,7 @@ class NurseryController extends Controller
         $nursery = Nursery::findOrFail($id);
         $states = State::all();
 
-        $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $id)->get();
+        $expensesWithoutEligibleAmounts = Expense::where('nursery_id', $id)->orderBy('dateTime', 'desc')->get();
         $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
             $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);
             return $expense;

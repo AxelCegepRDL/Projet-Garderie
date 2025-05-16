@@ -26,19 +26,19 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Date</th>
-                <th>Nom enfant</th>
-                <th>Prénom enfant</th>
-                <th>Date naissance enfant</th>
-                <th>Nom éducateur</th>
-                <th>Prénom éducateur</th>
-                <th>Date naissance éducateur</th>
+                <th class="text-info">Date</th>
+                <th class="text-info">Nom enfant</th>
+                <th class="text-info">Prénom enfant</th>
+                <th class="text-info">Date naissance enfant</th>
+                <th class="text-info">Nom éducateur</th>
+                <th class="text-info">Prénom éducateur</th>
+                <th class="text-info">Date naissance éducateur</th>
                 <th>
                     <form action="{{route('presence.clear', ["id" => request('nurseryId', $nurseries[0]->id)])}}" method="post">
                         @method('DELETE')
                         @csrf
                         <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                            onclick="confirm('Êtes-vous sûr de vouloir vider la liste des présences ?');"
+                            onclick="return confirm('Êtes-vous sûr de vouloir vider la liste des présences ?');"
                             @if($presences->count() == 0) disabled @endif >
                     </form>
             </th>
@@ -58,13 +58,13 @@
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="confirm('Êtes-vous sûr de vouloir supprimer cette présence ?');">
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette présence ?');">
                         </form>
                     </td>
                 </tr>
             @endforeach
         @else
-            <tr><td colspan="4"><em>Aucune présence à afficher</em></td></tr>
+            <tr><td colspan="9"><em>Aucune présence à afficher</em></td></tr>
         @endif
         </table>
     </div>
