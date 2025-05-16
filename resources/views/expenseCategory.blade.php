@@ -12,7 +12,7 @@
                     @method('DELETE')
                     @csrf
                     <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des catégories de dépense ?');"></input>
+                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des catégories de dépense ?');">
                 </form>
             </div>
         </div>
@@ -20,11 +20,11 @@
             @foreach ($expenseCategories as $expenseCategory)
                 <div class="row row-cols-12 my-4">
                     <div class="col col-5">{{$expenseCategory->description}}</div>
-                    <div class="col col-4">{{$expenseCategory->percentage}}</div>
+                    <div class="col col-4">{{$expenseCategory->percentage * 100}} %</div>
                     <div class="col">
                         <form action="/ExpenseCategory/{{$expenseCategory->id}}/edit" method="get">
                             @csrf
-                            <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
+                            <input class="btn btn-warning text-white" value="Modifier" type="submit">
                         </form>
                     </div>
                     <div class="col">
@@ -32,7 +32,7 @@
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette catégorie de dépense ?');"></input>
+                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette catégorie de dépense ?');">
                         </form>
                     </div>
                 </div>
@@ -50,8 +50,8 @@
                 <input type="text" name="description" id="description" placeholder="Déscription de la catégorie" class="col">
             </div>
             <div class="row my-1">
-                <label for="percentage" class="col">Pourcentage</label>
-                <input type="number" step="0.05" min="0" max="1" name="percentage" id="percentage" class="col">
+                <label for="percentage" class="col">Pourcentage (en %)</label>
+                <input type="number" step="1" min="0" max="100" name="percentage" id="percentage" class="col" placeholder="100">
             </div>
             <div class="row my-3">
                 <input type="submit" value="Ajouter">

@@ -7,14 +7,14 @@
             @method('PUT')
             @csrf
             <div class="row my-1">
-                <label for="description" class="col">Déscription</label>
+                <label for="description" class="col">Description</label>
                 <input type="text" name="description" id="description" placeholder="Déscription de la catégorie"
                     value="{{ $expenseCategory->description }}" class="col">
             </div>
             <div class="row my-1">
-                <label for="percentage" class="col">Pourcentage</label>
-                <input type="number" min="0" max="1" step="0.05" name="percentage" id="percentage"
-                    value="{{ $expenseCategory->percentage }}" class="col">
+                <label for="percentage" class="col">Pourcentage (en %)</label>
+                <input type="number" min="0" max="100" step="1" name="percentage" id="percentage"
+                    value="{{ $expenseCategory->percentage*100 }}" class="col">
             </div>
             <div class="row my-3">
                 <input type="submit" value="Modifier">
@@ -40,8 +40,8 @@
                 <div class="row row-cols-12 my-4">
                     <div class="col col">{{$expense->nursery->name}}</div>
                     <div class="col col-2">{{$expense->dateTime}}</div>
-                    <div class="col">{{$expense->amount}}</div>
-                    <div class="col col-2">{{ $expense->eligibleAmount }}</div>
+                    <div class="col">{{ number_format($expense->amount, 2, ",", " ") }} $</div>
+                    <div class="col col-2">{{ number_format($expense->eligibleAmount, 2, ",", " ") }} $</div>
                     <div class="col col-3">{{$expense->expenseCategory->description}}</div>
                     <div class="col">{{$expense->commerce->description}}</div>
                     <div class="col"></div>

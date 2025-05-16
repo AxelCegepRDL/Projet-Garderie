@@ -32,7 +32,7 @@
                     @method('DELETE')
                     @csrf
                     <input class="btn btn-danger" value="Vider la liste" type="submit"
-                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des dépenses ?');"></input>
+                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des dépenses ?');">
                 </form>
             </div>
         </div>
@@ -40,14 +40,14 @@
             @foreach ($expenses as $expense)
                 <div class="row row-cols-12 my-4">
                     <div class="col col-2">{{$expense->dateTime}}</div>
-                    <div class="col">{{$expense->amount}}</div>
-                    <div class="col col-2">{{ $expense->eligibleAmount }}</div>
+                    <div class="col">{{ number_format($expense->amount, 2, ",", " ") }} $</div>
+                    <div class="col col-2">{{ number_format($expense->eligibleAmount, 2, ",", " ") }} $</div>
                     <div class="col col-3">{{$expense->expenseCategory->description}}</div>
                     <div class="col">{{$expense->commerce->description}}</div>
                     <div class="col">
                         <form action="/Expenses/{{$expense->id}}/edit" method="get">
                             @csrf
-                            <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
+                            <input class="btn btn-warning text-white" value="Modifier" type="submit">
                         </form>
                     </div>
                     <div class="col">
@@ -55,7 +55,7 @@
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger" value="Supprimer" type="submit"
-                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette dépense ?');"></input>
+                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette dépense ?');">
                         </form>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
             <div class="row my-1">
                 <label for="expense_category_id" class="col">Catégorie de dépense</label>
                 @if($expenseCategories->count() > 0)
-                    <select type="text" name="expense_category_id" id="expense_category_id" class="col" required>
+                    <select name="expense_category_id" id="expense_category_id" class="col" required>
                         @foreach($expenseCategories as $expenseCategorie)
                             <option value="{{ $expenseCategorie->id }}">{{ $expenseCategorie->description }}</option>
                         @endforeach

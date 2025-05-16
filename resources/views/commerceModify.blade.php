@@ -45,8 +45,8 @@
                     <tr>
                         <td>{{$expense->nursery->name}}</td>
                         <td>{{$expense->dateTime}}</td>
-                        <td>{{$expense->amount}}</td>
-                        <td>{{$expense->eligibleAmount}}</td>
+                        <td>{{ number_format($expense->amount, 2, ",", " ") }} $</td>
+                        <td>{{ number_format($expense->eligibleAmount, 2, ",", " ") }} $</td>
                         <td>{{$expense->expenseCategory->description}}</td>
                         <td>{{$expense->commerce->description}}</td>
                     </tr>

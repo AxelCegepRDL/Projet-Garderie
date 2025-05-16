@@ -18,7 +18,7 @@ class ExpenseCategoryController extends Controller
     {
         ExpenseCategory::create([
             'description' => $request->description,
-            'percentage' => $request->percentage
+            'percentage' => $request->percentage / 100
         ]);
         return redirect()->route('List the expense categories');
     }
@@ -39,7 +39,7 @@ class ExpenseCategoryController extends Controller
     {
         $expenseCategory = ExpenseCategory::findOrFail($id);
         $expenseCategory->description = $request->description;
-        $expenseCategory->percentage = $request->percentage;
+        $expenseCategory->percentage = $request->percentage/100;
         $expenseCategory->save();
         return redirect()->route('List the expense categories');
     }
