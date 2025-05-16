@@ -43,26 +43,29 @@
     </div>
     <h1 class="m-5">Liste des dépenses de cette garderie</h1>
     <div class="container border border-info p-3">
-        <div class="row row-cols-12 text-info">
-            <div class="col col-2"><b>DateTemps</b></div>
-            <div class="col"><b>Montant</b></div>
-            <div class="col col-2"><b>Montant admissible</b></div>
-            <div class="col col-3"><b>Catégorie de dépense</b></div>
-            <div class="col"><b>Commerce</b></div>
-        </div>
-        @if ($expenses->count() > 0)
-            @foreach ($expenses as $expense)
-                <div class="row row-cols-12 my-1">
-                    <div class="col col-2">{{$expense->dateTime}}</div>
-                    <div class="col">{{$expense->amount}}$</div>
-                    <div class="col col-2">{{ $expense->eligibleAmount}}$</div>
-                    <div class="col col-3">{{$expense->expenseCategory->description}}</div>
-                    <div class="col">{{$expense->commerce->description}}</div>
-                </div>
-            @endforeach
-        @else
-            <div class="col "><span>Aucune dépense pour cette garderie...</span></div>
-        @endif
-    </div>
+        <table class="table">
+            <tr>
+                <th class="text-info">Garderie</th>
+                <th class="text-info">DateTemps</th>
+                <th class="text-info">Montant</th>
+                <th class="text-info">Montant admissible</th>
+                <th class="text-info">Catégorie de dépense</th>
+                <th class="text-info">Commerce</th>
+            </tr>
+            @if($expenses->count() > 0)
+                @foreach($expenses as $expense)
+                    <tr>
+                        <td>{{$expense->nursery->name}}</td>
+                        <td>{{$expense->dateTime}}</td>
+                        <td>{{ number_format($expense->amount, 2, ",", " ") }} $</td>
+                        <td>{{ number_format($expense->eligibleAmount, 2, ",", " ") }} $</td>
+                        <td>{{$expense->expenseCategory->description}}</td>
+                        <td>{{$expense->commerce->description}}</td>
+                    </tr>
+                @endforeach
+            @else
+                <tr><td colspan="4"><em>Aucune dépense à afficher pour cette garderie</em></td></tr>
+            @endif
+        </table>
     </div>
 @endsection

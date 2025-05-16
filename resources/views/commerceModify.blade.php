@@ -33,12 +33,12 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Garderie</th>
-                <th>DateTemps</th>
-                <th>Montant</th>
-                <th>Montant admissible</th>
-                <th>Catégorie de dépense</th>
-                <th>Commerce</th>
+                <th class="text-info">Garderie</th>
+                <th class="text-info">DateTemps</th>
+                <th class="text-info">Montant</th>
+                <th class="text-info">Montant admissible</th>
+                <th class="text-info">Catégorie de dépense</th>
+                <th class="text-info">Commerce</th>
             </tr>
             @if($expenses->count() > 0)
                 @foreach($expenses as $expense)

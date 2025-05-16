@@ -10,9 +10,10 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Description</th>
-                <th>Adresse</th>
-                <th>Téléphone</th>
+                <th class="text-info">Description</th>
+                <th class="text-info">Adresse</th>
+                <th class="text-info">Téléphone</th>
+                <th></th>
                 <th>
                     <form action="{{route('commerce.clear')}}" method="post">
                         @method('DELETE')
@@ -33,7 +34,8 @@
                         <form action="/commerce/{{$commerce->id}}/edit" method="get">
                             @csrf
                             <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
-                        </form>
+                        </form></td>
+                    <td>
                         <form action="/commerce/{{$commerce->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
@@ -44,7 +46,7 @@
                 </tr>
             @endforeach
         @else
-            <tr><td colspan="4"><em>Aucun commerce à afficher</em></td></tr>
+            <tr><td colspan="5"><em>Aucun commerce à afficher</em></td></tr>
         @endif
         </table>
     </div>

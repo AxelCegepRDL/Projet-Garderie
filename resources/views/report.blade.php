@@ -24,8 +24,8 @@
         @endif
     </form>
     <div class="container border border-info p-3">
-        <p>Total des revenus : {{$numberOfPresences}} présences X 48$ = {{$earnings}}$</p>
-        <p>Total des dépenses : Dépenses admissibles : {{$totalEligibleAmountOfExpense}}$ + Total des salaires : {{$totalAmountOfSalary}}$ = {{$totalAmountOfExpenses}}$</p>
-        <p>Profits : Revenus ({{$earnings}}$) - Dépenses ({{$totalAmountOfExpenses}}$) = {{$profit}}$</p>
+        <p>Total des revenus : {{$numberOfPresences}} présences X 48,00 $ = {{number_format($earnings, 2, ",", " ")}} $</p>
+        <p>Total des dépenses : Dépenses admissibles : {{number_format($totalEligibleAmountOfExpense, 2, ",", " ")}} $ + Total des salaires : {{number_format($totalAmountOfSalary, 2, ",", " ")}} $ = {{number_format($totalAmountOfExpenses, 2, ",", " ")}} $</p>
+        <p>Profits : Revenus ({{number_format($earnings, 2, ",", " ")}} $) - Dépenses ({{number_format($totalAmountOfExpenses, 2, ",", " ")}} $) = {{number_format($profit, 2, ",", " ")}} $</p>
     </div>
 @endsection

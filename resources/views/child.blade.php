@@ -10,13 +10,14 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Date de naissance</th>
-                <th>Adresse</th>
-                <th>Ville</th>
-                <th>Province</th>
-                <th>Téléphone</th>
+                <th class="text-info">Nom</th>
+                <th class="text-info">Prénom</th>
+                <th class="text-info">Date de naissance</th>
+                <th class="text-info">Adresse</th>
+                <th class="text-info">Ville</th>
+                <th class="text-info">Province</th>
+                <th class="text-info">Téléphone</th>
+                <th></th>
                 <th>
                     <form action="{{route('child.clear')}}" method="post">
                         @method('DELETE')
@@ -41,7 +42,8 @@
                         <form action="/child/{{$child->id}}/edit" method="get">
                             @csrf
                             <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
-                        </form>
+                        </form></td>
+                    <td>
                         <form action="/child/{{$child->id}}/delete" method="post">
                             @method('DELETE')
                             @csrf
@@ -52,7 +54,7 @@
                 </tr>
             @endforeach
         @else
-            <tr><td colspan="4"><em>Aucun enfant à afficher</em></td></tr>
+            <tr><td colspan="9"><em>Aucun enfant à afficher</em></td></tr>
         @endif
         </table>
     </div>

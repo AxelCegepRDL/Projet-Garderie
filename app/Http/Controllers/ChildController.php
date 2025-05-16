@@ -35,7 +35,7 @@ class ChildController extends Controller
     {
         $child = Child::findOrFail($id);
         $states = State::all();
-        $presences = Presence::where('child_id', $id)->get();
+        $presences = Presence::where('child_id', $id)->orderBy('date', 'desc')->get();
 
         return view('childModify', compact('child', 'states', 'presences'));
     }

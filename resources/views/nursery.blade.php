@@ -3,49 +3,52 @@
 @section('content')
     <h1 class="m-5">Liste des garderies</h1>
     <div class="container border border-info p-3">
-        <div class="row row-cols-12">
-            <div class="col col-2 text-info"><b>Nom</b></div>
-            <div class="col col-3 text-info"><b>Adresse</b></div>
-            <div class="col col-2 text-info"><b>Ville</b></div>
-            <div class="col text-info"><b>Province</b></div>
-            <div class="col text-info"><b>Telephone</b></div>
-            <div class="col"></div>
-            <div class="col">
-                <form action="{{route('Clear list nursery')}}" method="post">
-                    @method('DELETE')
-                    @csrf
-                    <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                        onclick="alert('Êtes-vous sûr de vouloir vider la liste des garderies ?');"></input>
-                </form>
-            </div>
-        </div>
-        @if ($nurseries->count() > 0)
-            @foreach ($nurseries as $nursery)
-                <div class="row row-cols-12 my-4">
-                    <div class="col col-2">{{$nursery->name}}</div>
-                    <div class="col col-3">{{$nursery->address}}</div>
-                    <div class="col col-2">{{$nursery->city}}</div>
-                    <div class="col">{{$nursery->state->description}}</div>
-                    <div class="col">{{$nursery->phone}}</div>
-                    <div class="col">
-                        <form action="/garderies/{{$nursery->id}}/edit" method="get">
-                            @csrf
-                            <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
-                        </form>
-                    </div>
-                    <div class="col">
-                        <form action="/garderies/{{$nursery->id}}/delete" method="post">
-                            @method('DELETE')
-                            @csrf
-                            <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="alert('Êtes-vous sûr de vouloir supprimer cette garderie ?');"></input>
-                        </form>
-                    </div>
-                </div>
-            @endforeach
-        @else
-            <div class="col "><span>Aucune garderie...</span></div>
-        @endif
+        <table class="table">
+            <tr>
+                <th class="text-info"><b>Nom</b></th>
+                <th class="text-info"><b>Adresse</b></th>
+                <th class="text-info"><b>Ville</b></th>
+                <th class="text-info"><b>Province</b></th>
+                <th class="text-info"><b>Telephone</b></th>
+                <th></th>
+                <th>
+                    <form action="{{route('Clear list nursery')}}" method="post">
+                        @method('DELETE')
+                        @csrf
+                        <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
+                               onclick="alert('Êtes-vous sûr de vouloir vider la liste des garderies ?');"
+                               @if($nurseries->count() == 0) disabled @endif></input>
+                    </form>
+                </th>
+            </tr>
+            @if ($nurseries->count() > 0)
+                @foreach ($nurseries as $nursery)
+                    <tr>
+                        <td>{{$nursery->name}}</td>
+                        <td>{{$nursery->address}}</td>
+                        <td>{{$nursery->city}}</td>
+                        <td>{{$nursery->state->description}}</td>
+                        <td>{{$nursery->phone}}</td>
+                        <td>
+                            <form action="/garderies/{{$nursery->id}}/edit" method="get">
+                                @csrf
+                                <input class="btn btn-warning text-white" value="Modifier" type="submit"></input>
+                            </form>
+                        </td>
+                        <td>
+                            <form action="/garderies/{{$nursery->id}}/delete" method="post">
+                                @method('DELETE')
+                                @csrf
+                                <input class="btn btn-danger text-white" value="Supprimer" type="submit"
+                                       onclick="alert('Êtes-vous sûr de vouloir supprimer cette garderie ?');"></input>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            @else
+                <tr><td colspan="7"><em>Aucune garderie à afficher</em></td></tr>
+            @endif
+        </table>
     </div>
     <h1 class="m-5">Ajouter une garderie</h1>
     <div class="container">

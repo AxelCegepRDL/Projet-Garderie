@@ -16,9 +16,9 @@ class PresenceController extends Controller
         $educators = Educator::all();
 
         if (isset($request->nurseryId)) {
-            $presences = Presence::where('nursery_id', $request->nurseryId)->get();
+            $presences = Presence::where('nursery_id', $request->nurseryId)->orderBy('date', 'desc')->get();
         } else if ($nurseries->count() > 0) {
-            $presences = Presence::where('nursery_id', $nurseries[0]->id)->get();
+            $presences = Presence::where('nursery_id', $nurseries[0]->id)->orderBy('date', 'desc')->get();
         } else {
             $presences = [];
         }

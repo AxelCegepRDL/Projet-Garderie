@@ -10,7 +10,7 @@
     <div class="container border border-info p-3">
         <table class="table">
             <tr>
-                <th>Description</th>
+                <th class="text-info">Description</th>
                 <th></th>
         </tr>
         @if($states->count() > 0)

@@ -26,7 +26,7 @@ class ExpenseCategoryController extends Controller
     public function formModifyExpenseCategory($id)
     {
         $expenseCategory = ExpenseCategory::findOrFail($id);
-        $expensesWithoutEligibleAmounts = Expense::where('expense_category_id', $id)->get();
+        $expensesWithoutEligibleAmounts = Expense::where('expense_category_id', $id)->orderBy('dateTime', 'desc')->get();
 
         $expenses = $expensesWithoutEligibleAmounts->map(function ($expense) {
             $expense->setAttribute('eligibleAmount', $expense->amount * $expense->expenseCategory->percentage);

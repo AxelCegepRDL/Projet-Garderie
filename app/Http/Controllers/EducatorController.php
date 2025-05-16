@@ -35,9 +35,9 @@ class EducatorController extends Controller
     {
         $educator = Educator::findOrFail($id);
         $states = State::all();
-        $presences = Presence::where('educator_id', $id)->get();
+        $presences = Presence::where('educator_id', $id)->orderBy('date', 'desc')->get();
         foreach($presences as $p){
-            $p->setAttribute('nursery', Nursery::where('id', $p->nursery_id)->value('name')); 
+            $p->setAttribute('nursery', Nursery::where('id', $p->nursery_id)->value('name'));
             $child = Child::where('id', $p->child_id)->first();
             $p->setAttribute('childFirstName', $child->firstName);
             $p->setAttribute('childLastName', $child->lastName);

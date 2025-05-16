@@ -8,7 +8,7 @@
             @csrf
             <div class="row my-1">
                 <label for="description" class="col">Description</label>
-                <input type="text" name="description" id="description" placeholder="Déscription de la catégorie"
+                <input type="text" name="description" id="description" placeholder="Description de la catégorie"
                     value="{{ $expenseCategory->description }}" class="col">
             </div>
             <div class="row my-1">
@@ -26,29 +26,29 @@
     </div>
     <h1 class="m-5">Liste des dépenses de cette catégorie</h1>
     <div class="container border border-info p-3">
-        <div class="row row-cols-12 my-4">
-            <div class="col col text-info"><b>Garderie</b></div>
-            <div class="col col-2 text-info"><b>DateTemps</b></div>
-            <div class="col text-info"><b>Montant</b></div>
-            <div class="col col-2 text-info"><b>Montant admissible</b></div>
-            <div class="col col-3 text-info"><b>Catégorie de dépense</b></div>
-            <div class="col text-info"><b>Commerce</b></div>
-            <div class="col text-info"></div>
-        </div>
-        @if ($expenses->count() > 0)
-            @foreach ($expenses as $expense)
-                <div class="row row-cols-12 my-4">
-                    <div class="col col">{{$expense->nursery->name}}</div>
-                    <div class="col col-2">{{$expense->dateTime}}</div>
-                    <div class="col">{{ number_format($expense->amount, 2, ",", " ") }} $</div>
-                    <div class="col col-2">{{ number_format($expense->eligibleAmount, 2, ",", " ") }} $</div>
-                    <div class="col col-3">{{$expense->expenseCategory->description}}</div>
-                    <div class="col">{{$expense->commerce->description}}</div>
-                    <div class="col"></div>
-                </div>
-            @endforeach
-        @else
-            <div class="col "><span>Aucune dépense pour cette catégorie...</span></div>
-        @endif
+        <table class="table">
+            <tr>
+                <th class="text-info">Garderie</th>
+                <th class="text-info">DateTemps</th>
+                <th class="text-info">Montant</th>
+                <th class="text-info">Montant admissible</th>
+                <th class="text-info">Catégorie de dépense</th>
+                <th class="text-info">Commerce</th>
+            </tr>
+            @if($expenses->count() > 0)
+                @foreach($expenses as $expense)
+                    <tr>
+                        <td>{{$expense->nursery->name}}</td>
+                        <td>{{$expense->dateTime}}</td>
+                        <td>{{ number_format($expense->amount, 2, ",", " ") }} $</td>
+                        <td>{{ number_format($expense->eligibleAmount, 2, ",", " ") }} $</td>
+                        <td>{{$expense->expenseCategory->description}}</td>
+                        <td>{{$expense->commerce->description}}</td>
+                    </tr>
+                @endforeach
+            @else
+                <tr><td colspan="4"><em>Aucune dépense à afficher pour cette catégorie</em></td></tr>
+            @endif
+        </table>
     </div>
 @endsection
