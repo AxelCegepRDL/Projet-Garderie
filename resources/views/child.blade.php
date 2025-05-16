@@ -94,8 +94,8 @@
                 <label for="phone" class="col">Téléphone</label>
                 <input type="text" pattern="{0 - 9}" name="phone" id="phone" class="col">
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto" type="submit" value="Ajouter">
             </div>
         </form>
     </div>

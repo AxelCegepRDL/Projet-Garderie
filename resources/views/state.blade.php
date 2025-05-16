@@ -40,8 +40,8 @@
                 <label for="description" class="col">Description</label>
                 <input type="text" name="description" id="description" class="col">
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto" type="submit" value="Ajouter">
             </div>
         </form>
     </div>

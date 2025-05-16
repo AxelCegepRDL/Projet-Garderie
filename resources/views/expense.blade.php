@@ -102,8 +102,8 @@
                     <span class="col">Aucun commerce disponible...</span>
                 @endif
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto" type="submit" value="Ajouter">
             </div>
             <input type="hidden" name="nursery_id" value="{{  request('nurseryId', $nurseries[0]->id) }}">
         </form>

@@ -56,8 +56,8 @@
                 <label for="percentage" class="col">Pourcentage (en %)</label>
                 <input type="number" step="1" min="0" max="100" name="percentage" id="percentage" class="col" placeholder="100">
             </div>
-            <div class="row my-3">
-                <input type="submit" value="Ajouter">
+            <div class="row my-3 justify-content-center">
+                <input class="btn btn-success w-auto " type="submit" value="Ajouter">
             </div>
         </form>
     </div>
