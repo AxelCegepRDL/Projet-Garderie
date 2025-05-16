@@ -18,7 +18,7 @@
                         @method('DELETE')
                         @csrf
                         <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                               onclick="alert('Êtes-vous sûr de vouloir vider la liste des éducateurs ?');"
+                               onclick="return confirm('Êtes-vous sûr de vouloir vider la liste des éducateurs ?');"
                                @if($educators->count() == 0) disabled @endif></input>
                     </form>
                 </th>
@@ -44,7 +44,7 @@
                                 @method('DELETE')
                                 @csrf
                                 <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                       onclick="alert('Êtes-vous sûr de vouloir supprimer cet éducateur ?');"></input>
+                                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet éducateur ?');"></input>
                             </form>
                         </td>
                     </tr>

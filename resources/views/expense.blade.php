@@ -33,7 +33,7 @@
                         @method('DELETE')
                         @csrf
                         <input class="btn btn-danger" value="Vider la liste" type="submit"
-                               onclick="alert('Êtes-vous sûr de vouloir vider la liste des dépenses ?');"
+                               onclick="return confirm('Êtes-vous sûr de vouloir vider la liste des dépenses ?');"
                                @if($expenses->count() == 0) disabled @endif>
                     </form>
                 </th>
@@ -57,7 +57,7 @@
                                 @method('DELETE')
                                 @csrf
                                 <input class="btn btn-danger" value="Supprimer" type="submit"
-                                       onclick="alert('Êtes-vous sûr de vouloir supprimer cette dépense ?');">
+                                       onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette dépense ?');">
                             </form>
                         </td>
                     </tr>

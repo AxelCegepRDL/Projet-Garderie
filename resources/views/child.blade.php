@@ -23,7 +23,7 @@
                         @method('DELETE')
                         @csrf
                         <input class="btn btn-danger text-white" value="Vider la liste" type="submit"
-                            onclick="comfirm('Êtes-vous sûr de vouloir vider la liste des enfants ?');"
+                            onclick="return confirm('Êtes-vous sûr de vouloir vider la liste des enfants ?');"
                             @if($children->count() == 0) disabled @endif ></input>
                     </form>
             </th>
@@ -48,7 +48,7 @@
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="confirm('Êtes-vous sûr de vouloir supprimer cet enfant ?');"></input>
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enfant ?');"></input>
                         </form>
                     </td>
                 </tr>

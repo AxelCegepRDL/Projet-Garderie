@@ -22,7 +22,7 @@
                             @method('DELETE')
                             @csrf
                             <input class="btn btn-danger text-white" value="Supprimer" type="submit"
-                                onclick="confirm('Êtes-vous sûr de vouloir supprimer cet état ?');">
+                                onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet état ?');">
                         </form>
                     </td>
                 </tr>
