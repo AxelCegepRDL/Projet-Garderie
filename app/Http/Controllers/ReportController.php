@@ -6,10 +6,23 @@ use App\Models\Expense;
 use App\Models\Nursery;
 use App\Models\Presence;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
+/**
+ * Class ReportController
+ *
+ * Controller responsible for displaying a by-nursery finance report
+ */
 class ReportController extends Controller
 {
-    public function index(Request $request)
+    /**
+     * Controller method to render and display the financial report of a nursery
+     *
+     * @param Request $request Request data containing the nursery's ID when specified (optional)
+     *
+     * @return View The rendered index view
+     */
+    public function index(Request $request) : View
     {
         $nurseries = Nursery::all();
 
