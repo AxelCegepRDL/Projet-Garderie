@@ -8,16 +8,16 @@
             @csrf
             <div class="row my-1">
                 <label for="firstName" class="col">Prénom</label>
-                <input type="text" name="firstName" id="firstName" value="{{ $educator->firstName }}" class="col" readonly>
+                <input type="text" name="firstName" id="firstName" value="{{ $educator->firstName }}" class="col" disabled>
             </div>
             <div class="row my-1">
                 <label for="lastName" class="col">Nom</label>
-                <input type="text" name="lastName" id="lastName" value="{{ $educator->lastName }}" class="col" readonly>
+                <input type="text" name="lastName" id="lastName" value="{{ $educator->lastName }}" class="col" disabled>
             </div>
             <div class="row my-1">
                 <label for="dateOfBirth" class="col">Date de naissance</label>
                 <input type="text" name="dateOfBirth" id="dateOfBirth" value="{{ $educator->dateOfBirth }}" class="col"
-                    readonly>
+                    disabled>
             </div>
             <div class="row my-1">
                 <label for="address" class="col">Adresse</label>

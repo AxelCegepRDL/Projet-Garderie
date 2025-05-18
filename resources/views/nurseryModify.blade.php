@@ -8,7 +8,7 @@
             @csrf
             <div class="row my-1">
                 <label for="name" class="col">Nom</label>
-                <input type="text" name="name" id="name" value="{{ $nursery->name }}" class="col">
+                <input type="text" name="name" id="name" value="{{ $nursery->name }}" class="col" disabled>
             </div>
             <div class="row my-1">
                 <label for="address" class="col">Adresse</label>

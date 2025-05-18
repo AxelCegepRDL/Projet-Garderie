@@ -9,7 +9,7 @@
             <div class="row my-1">
                 <label for="description" class="col">Description</label>
                 <input type="text" name="description" id="description" placeholder="Description de la catégorie"
-                    value="{{ $expenseCategory->description }}" class="col">
+                    value="{{ $expenseCategory->description }}" class="col" disabled>
             </div>
             <div class="row my-1">
                 <label for="percentage" class="col">Pourcentage (en %)</label>
